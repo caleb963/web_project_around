@@ -1,0 +1,46 @@
+.elements{
+  width:880px;
+  height:744px;
+  margin-top:129px;
+  margin-left:200px;
+  border-radius:10px 10px 0px 0px;
+  border:1px;
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  grid-template-rows:repeat(2, 1fr);
+  grid-gap:10px;
+  grid-template-areas:
+  "yosemite lake mountains"
+  "latemar vanoise lago"
+  ;
+}
+
+.element__yosemite{
+  grid-area:yosemite;
+  margin:auto;
+}
+
+.element__lake{
+  grid-area:lake;
+  margin:auto;
+}
+
+.element__mountains{
+  grid-area:mountains;
+  margin:auto;
+}
+
+.element__latemar{
+  grid-area:latemar;
+  margin:auto;
+}
+
+.element__vanoise{
+  grid-area:vanoise;
+  margin:auto;
+}
+
+.element__lago{
+  grid-area:lago;
+  margin:auto;
+}

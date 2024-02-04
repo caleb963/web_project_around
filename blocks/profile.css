@@ -1,0 +1,65 @@
+.profile{
+  width:880px;
+  height:120px;
+  margin-top:40px;
+  margin-left:200px;
+  color:#FFFFFF;
+  display:flex;
+}
+
+
+.profile__avatar{
+  width:120px;
+  height:120px;
+  margin-top:40px;
+}
+
+.profile__info{
+  width:415px;
+  height:77px;
+  margin-top:24px;
+  margin-left:30px;
+  margin-right:165px;
+  display:grid;
+  grid-template-columns: rep(1fr,1fr);
+  grid-template-rows:rep(1fr,1fr);
+  grid-template-areas:
+  "name button"
+  "ocupation ."
+  ;
+}
+
+
+
+.profile__name{
+  width:373px;
+  height:39px;
+  font-family:'Inter';
+  font-weight:500;
+  font-size:42px;
+  line-height: 48px;
+  color:#FFFFFF;
+  grid-area:name;
+}
+
+.profile__ocupation{
+  width:415px;
+  height:22px;
+  margin-top:16px;
+  font-family:'Inter';
+  font-weight:400;
+  font-size:18px;
+  line-height:22px;
+  grid-area:ocupation;
+}
+
+.profile__edit-button{
+  color:#FFFFFF;
+  margin-top:50px;;
+  grid-area:button;
+}
+
+.profile__add-button{
+  margin-right:200px;
+  margin-top:80px;
+}

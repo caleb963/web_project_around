@@ -1,0 +1,12 @@
+.header{
+  width:880px;
+  height:74px;
+  margin-top:45px;
+  margin-left:200px;
+  border:1px;
+}
+
+.header__title{
+  margin-left:200px;
+  margin-top:45px;
+}

@@ -1,0 +1,17 @@
+@import url(./normalize.css);
+
+@import url(./blocks/page.css);
+
+@import url(./blocks/header.css);
+
+@import url(./blocks/profile.css);
+
+@import url(./blocks/elements.css);
+
+@import url(./blocks/footer.css);
+
+@font-face {
+  font-family:'Inter';
+  src: url(./fonts/InterDisplay-Regular.woff2) format('woff2');
+  src: url(./fonts/InterDisplay-Bold.woff2) format('woff2');
+}
