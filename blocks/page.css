@@ -3,3 +3,10 @@
   width:1280px;
   height:1546px;
 }
+
+@media screen and (max-width:320px){
+  .page {
+    width:320px;
+    height:2814px;
+  }
+}
