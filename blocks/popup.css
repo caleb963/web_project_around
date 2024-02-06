@@ -1,0 +1,12 @@
+.popup{
+  width:430px;
+  height:330px;
+  margin-top:195px;
+  margin-left:425px;
+  border:1px solid #E5E5E5;
+  display:none;
+}
+
+.popup__opener{
+  display:flex;
+}

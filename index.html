@@ -10,7 +10,7 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
-  <div class="page">
+  <main class="page">
     <header>
       <img src="./images/header__title.png" alt="header-title" class="header__title">
     </header>
@@ -19,7 +19,7 @@
       <div class="profile__info">
         <h2 class ="profile__name">Jacques Cousteau</h2>
         <a href="#"><img class="profile__edit-button" src="./images/Edit__Button.png"></a>
-        <h3 class ="profile__ocupation">Explorer</h3>
+        <h3 class ="profile__about">Explorer</h3>
       </div>
         <a href="#"><img class="profile__add-button" src="images/Add_Button.png"></a>
     </section>
@@ -34,6 +34,15 @@
     <footer>
       <p class="footer__text">© 2020 Around the U.S.</p>
     </footer>
-  </div>
+  </main>
+  <section class="popup">
+    <form class="popup__edit-form">
+      <h2>Edit profile</h2>
+      <input class="popup__input_type-name" type="text"/>
+      <input class="popup__input_type-about" type="text"/>
+      <button type="submit">Save</button>
+    </form>
+  </section>
+  <script src="index.js"></script>
 </body>
 </html>
