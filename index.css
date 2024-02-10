@@ -10,6 +10,8 @@
 
 @import url(./blocks/footer.css);
 
+@import url(./blocks/popup.css);
+
 @font-face {
   font-family:'Inter';
   src: url(./fonts/InterDisplay-Regular.woff2) format('woff2');

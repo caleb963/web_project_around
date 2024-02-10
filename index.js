@@ -19,7 +19,7 @@ function setPopupInputs() {
 }
 
 function openPopup() {
-    editPopupElement.classList.add("popup_opened");
+    editPopupElement.classList.add("popup__opener");
 }
 
 function handlePopupClick() {

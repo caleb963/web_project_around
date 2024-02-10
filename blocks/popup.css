@@ -1,12 +1,24 @@
 .popup{
-  width:430px;
-  height:330px;
-  margin-top:195px;
-  margin-left:425px;
-  border:1px solid #E5E5E5;
+  width:100%;
+  height:100vh;
+  background-color:rgba(0, 0 ,0 , 0.5);
   display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  align-items:center;
+  justify-content:center;
 }
 
 .popup__opener{
   display:flex;
+}
+
+.popup__edit-form{
+  width:430px;
+  height:300px;
+  background-color:white;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
