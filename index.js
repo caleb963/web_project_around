@@ -33,6 +33,15 @@ function saveForm(event) {
   profileAboutElement.textContent = jobInput.value;
   closePopup();
 }
+const closeButton = document.querySelector(".popup__close-button");
+
+function closePopup() {
+  editPopupElement.classList.remove("popup__opener");
+}
 
 editProfileButton.addEventListener("click", handlePopupClick);
+
+formElement.addEventListener("submit", saveForm);
+
+closeButton.addEventListener("click", closePopup);
 
