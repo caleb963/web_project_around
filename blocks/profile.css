@@ -25,8 +25,7 @@
   grid-template-rows:rep(1fr,1fr);
   grid-template-areas:
   "name button"
-  "about ."
-  ;
+  "about .";
 }
 
 
@@ -55,7 +54,7 @@
 
 .profile__edit-button{
   color:#FFFFFF;
-  margin-top:50px;;
+  margin-top:50px;
   grid-area:button;
 }
 
@@ -85,8 +84,7 @@
     grid-template-rows:repeat(2,1fr);
     grid-template-areas:
     "name button"
-    "about ."
-    ;
+    "about .";
   }
 
   .profile__name{
