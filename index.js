@@ -10,8 +10,8 @@ const editProfileButton = document.querySelector(".profile__edit-button");
 const editPopupElement = document.querySelector(".popup");
 
 const formElement = document.querySelector(".popup__edit-form");
-const nameInput = formElement.querySelector(".popup__input_type-name");
-const jobInput = formElement.querySelector(".popup__input_type-about");
+const nameInput = formElement.querySelector(".popup__input-name");
+const jobInput = formElement.querySelector(".popup__input-about");
 
 function setPopupInputs() {
   nameInput.value = profileName;

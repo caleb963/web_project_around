@@ -38,19 +38,19 @@
   height:27px;
 }
 
-.popup__input_type-name{
+.popup__input-name{
   width:358px;
   height:27px;
 }
 
-.popup__input_type-about{
+.popup__input-about{
   width:358px;
   height:28px;
   margin-bottom:54px;
 }
 
 
-.popup__input_type-submit{
+.popup__input-submit{
   width:358px;
   height:50px;
   color:white;
@@ -61,7 +61,7 @@
   line-height:22px;
 }
 
-.popup__input_type-submit:hover{
+.popup__input-submit:hover{
   background-color:lightslategray;
   cursor:pointer;
 }
@@ -101,17 +101,17 @@
     height:27px;
   }
 
-  .popup__input_type-name{
+  .popup__input-name{
     width:238px;
     height:27px;
   }
 
-  .popup__input_type-about{
+  .popup__input-about{
     width:238px;
     height:27px;
   }
 
-  .popup__input_type-submit{
+  .popup__input-submit{
     width:238px;
     height:46px;
     font-family:'Inter';

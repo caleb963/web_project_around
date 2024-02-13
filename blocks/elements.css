@@ -14,32 +14,32 @@
   "latemar vanoise lago";
 }
 
-.element__yosemite{
+.elements__yosemite{
   grid-area:yosemite;
   margin:auto;
 }
 
-.element__lake{
+.elements__lake{
   grid-area:lake;
   margin:auto;
 }
 
-.element__mountains{
+.elements__mountains{
   grid-area:mountains;
   margin:auto;
 }
 
-.element__latemar{
+.elements__latemar{
   grid-area:latemar;
   margin:auto;
 }
 
-.element__vanoise{
+.elements__vanoise{
   grid-area:vanoise;
   margin:auto;
 }
 
-.element__lago{
+.elements__lago{
   grid-area:lago;
   margin:auto;
 }
@@ -61,42 +61,42 @@
     "lago";
   }
 
-  .element__yosemite{
+  .elements__yosemite{
     margin:auto;
     grid-area:yosemite;
     width:282px;
     height:361px;
   }
 
-  .element__lake{
+  .elements__lake{
     margin:auto;
     grid-area:lake;
     width:282px;
     height:361px;
   }
 
-  .element__mountains{
+  .elements__mountains{
     margin:auto;
     grid-area:mountains;
     width:282px;
     height:361px;
   }
 
-  .element__latemar{
+  .elements__latemar{
     margin:auto;
     grid-area:latemar;
     width:282px;
     height:361px;
   }
 
-  .element__vanoise{
+  .elements__vanoise{
     margin:auto;
     grid-area:vanoise;
     width:282px;
     height:361px;
   }
 
-  .element__lago{
+  .elements__lago{
     margin:auto;
     grid-area:lago;
     width:282px;
