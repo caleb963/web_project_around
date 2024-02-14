@@ -14,36 +14,76 @@
   "latemar vanoise lago";
 }
 
-.elements__yosemite{
+.elements__card{
+  width:282px;
+  height:361px;
+  border-radius:10px;
+}
+
+.elements__card-yosemite{
   grid-area:yosemite;
   margin:auto;
 }
 
-.elements__lake{
+.elements__card-lake{
   grid-area:lake;
   margin:auto;
 }
 
-.elements__mountains{
+.elements__card-mountains{
   grid-area:mountains;
   margin:auto;
 }
 
-.elements__latemar{
+.elements__card-latemar{
   grid-area:latemar;
   margin:auto;
 }
 
-.elements__vanoise{
+.elements__card-vanoise{
   grid-area:vanoise;
   margin:auto;
 }
 
-.elements__lago{
+.elements__card-lago{
   grid-area:lago;
   margin:auto;
 }
 
+.elements__card-image{
+  width:282px;
+  height:282px;
+  border-radius:10px;
+}
+
+.elements__card-description{
+  width:282px;
+  height:60px;
+  background-color:white;
+  border-radius:0px 0px 10px 10px;
+  display:flex;
+}
+
+.elements__card-title{
+  width:246px;
+  height:23px;
+  color:#000000;
+  background-color:white;
+  font-family:'Inter';
+  font-weight:900px;
+  font-size:24px;
+  line-height:29px;
+  align-items:center;
+}
+
+.elements__card-button--like{
+  background-color:white;
+}
+
+.elements__card-button--like:hover{
+  background-color:lightslategray;
+  cursor:pointer;
+}
 @media screen and (min-width:320px) and (max-width:1279px) {
   .elements{
     width:282px;
@@ -61,42 +101,42 @@
     "lago";
   }
 
-  .elements__yosemite{
+  .elements__card-yosemite{
     margin:auto;
     grid-area:yosemite;
     width:282px;
     height:361px;
   }
 
-  .elements__lake{
+  .elements__card-lake{
     margin:auto;
     grid-area:lake;
     width:282px;
     height:361px;
   }
 
-  .elements__mountains{
+  .elements__card-mountains{
     margin:auto;
     grid-area:mountains;
     width:282px;
     height:361px;
   }
 
-  .elements__latemar{
+  .elements__card-latemar{
     margin:auto;
     grid-area:latemar;
     width:282px;
     height:361px;
   }
 
-  .elements__vanoise{
+  .elements__card-vanoise{
     margin:auto;
     grid-area:vanoise;
     width:282px;
     height:361px;
   }
 
-  .elements__lago{
+  .elements__card-lago{
     margin:auto;
     grid-area:lago;
     width:282px;
