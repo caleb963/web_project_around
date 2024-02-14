@@ -76,11 +76,11 @@
   align-items:center;
 }
 
-.elements__card-button--like{
+.elements__card-heart{
   background-color:white;
 }
 
-.elements__card-button--like:hover{
+.elements__card-heart:hover{
   background-color:lightslategray;
   cursor:pointer;
 }
