@@ -119,4 +119,13 @@
     color:lightslategray;
     cursor:pointer;
   }
+
+  .profile__add-button{
+    margin:auto;
+    margin-top:257px;
+    margin-left:-338px;
+    width:282px;
+    height:50px;
+
+  }
 }

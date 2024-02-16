@@ -62,6 +62,8 @@
   background-color:white;
   border-radius:0px 0px 10px 10px;
   display:flex;
+  justify-content: space-between;
+  align-items:center;
 }
 
 .elements__card-title{
@@ -70,17 +72,19 @@
   color:#000000;
   background-color:white;
   font-family:'Inter';
-  font-weight:900px;
+  font-weight:900;
   font-size:24px;
   line-height:29px;
   align-items:center;
-  overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
 }
 
 .elements__card-heart{
   background-color:white;
+  border:none;
+  padding:0;
+  margin-right:10px;
 }
 
 .elements__card-heart:hover{

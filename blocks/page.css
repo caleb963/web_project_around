@@ -1,12 +1,12 @@
 .page {
   background-color:#000000;
-  width:1280px;
+  width:100%;
   height:1546px;
 }
 
 @media screen and (max-width:320px){
   .page {
-    width:320px;
+    width:100%;
     height:2814px;
   }
 }
