@@ -1,9 +1,10 @@
 .footer{
-  width:318px;
-  height:18px;
+  width:100%;
+  max-width:318px;
+  height:auto;
   margin-top:66px;
-  margin-left:200px;
-  margin-right:762px;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 .footer__text{
@@ -14,7 +15,7 @@
   line-height:22px;
 }
 
-@media screen and (min-width:320px) and (max-width:1279px) {
+@media screen and (max-width:320px){
   .footer{
     width:282px;
     height:14px;

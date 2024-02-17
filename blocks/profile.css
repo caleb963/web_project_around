@@ -1,6 +1,7 @@
 .profile{
-  width:880px;
-  height:120px;
+  width:100%;
+  max-width:880px;
+  height:auto;
   margin-top:40px;
   margin-left:200px;
   color:#FFFFFF;
@@ -15,11 +16,12 @@
 }
 
 .profile__info{
-  width:415px;
-  height:77px;
+  width:100%;
+  max-width:415px;
+  height:auto;
   margin-top:24px;
   margin-left:30px;
-  margin-right:165px;
+  margin-right:auto;
   display:grid;
   grid-template-columns: rep(1fr,1fr);
   grid-template-rows:rep(1fr,1fr);
@@ -31,8 +33,9 @@
 
 
 .profile__name{
+  width:100%;
   width:373px;
-  height:39px;
+  height:auto;
   font-family:'Inter';
   font-weight:500;
   font-size:42px;
@@ -42,8 +45,9 @@
 }
 
 .profile__about{
-  width:415px;
-  height:22px;
+  width:100%;
+  max-width:415px;
+  height:auto;
   margin-top:16px;
   font-family:'Inter';
   font-weight:400;
@@ -59,11 +63,11 @@
 }
 
 .profile__add-button{
-  margin-right:200px;
-  margin-top:80px;
+  margin-right:auto;
+  margin-top:75px;
 }
 
-@media screen and (min-width:320px) and (max-width:1279px){
+@media screen and (max-width:320px){
   .profile{
     width:282px;
     height:286px;
@@ -123,7 +127,7 @@
   .profile__add-button{
     margin:auto;
     margin-top:257px;
-    margin-left:-338px;
+    margin-left:-175px;
     width:282px;
     height:50px;
 

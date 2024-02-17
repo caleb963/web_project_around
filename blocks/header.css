@@ -1,6 +1,7 @@
 .header{
-  width:880px;
-  height:74px;
+ width:100%;
+ max-width:880px;
+ height:auto;
 }
 
 .header__title{
@@ -8,7 +9,7 @@
   margin-top:45px;
 }
 
-@media screen and (min-width:320px) and (max-width:1279px) {
+@media screen and (max-width:320px){
   .header{
     width:320px;
     height:56px;

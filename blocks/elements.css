@@ -1,8 +1,10 @@
 .elements{
-  width:880px;
-  height:744px;
+  width:100%;
+  max-width:880px;
+  height:auto;
   margin-top:129px;
-  margin-left:200px;
+  margin-left:auto;
+  margin-right:auto;
   border-radius:10px 10px 0px 0px;
   border:1px;
   display:grid;
@@ -15,8 +17,9 @@
 }
 
 .elements__card{
-  width:282px;
-  height:361px;
+  width:100%;
+  max-width:282px;
+  height:auto;
   border-radius:10px;
   margin:auto;
 }
@@ -46,14 +49,16 @@
 }
 
 .elements__card-image{
-  width:282px;
-  height:282px;
+  width:100%;
+  max-width: 282px;
+  height:auto;
   border-radius:10px;
 }
 
 .elements__card-description{
-  width:282px;
-  height:60px;
+  width:100%;
+  max-width:282px;
+  height:auto;
   background-color:white;
   border-radius:0px 0px 10px 10px;
   display:flex;
@@ -62,7 +67,8 @@
 }
 
 .elements__card-title{
-  width:246px;
+  width:100%;
+  max-width:246px;
   color:#000000;
   background-color:white;
   font-family:'Inter';
@@ -86,7 +92,7 @@
   background-color:lightslategray;
   cursor:pointer;
 }
-@media screen and (min-width:320px) and (max-width:1279px) {
+@media screen and (max-width:320px){
   .elements{
     width:282px;
     height:2268px;
