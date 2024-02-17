@@ -18,36 +18,31 @@
   width:282px;
   height:361px;
   border-radius:10px;
+  margin:auto;
 }
 
 .elements__card-yosemite{
   grid-area:yosemite;
-  margin:auto;
 }
 
 .elements__card-lake{
   grid-area:lake;
-  margin:auto;
 }
 
 .elements__card-mountains{
   grid-area:mountains;
-  margin:auto;
 }
 
 .elements__card-latemar{
   grid-area:latemar;
-  margin:auto;
 }
 
 .elements__card-vanoise{
   grid-area:vanoise;
-  margin:auto;
 }
 
 .elements__card-lago{
   grid-area:lago;
-  margin:auto;
 }
 
 .elements__card-image{
@@ -68,7 +63,6 @@
 
 .elements__card-title{
   width:246px;
-  height:23px;
   color:#000000;
   background-color:white;
   font-family:'Inter';
@@ -78,6 +72,7 @@
   align-items:center;
   text-overflow:ellipsis;
   white-space:nowrap;
+  overflow:hidden;
 }
 
 .elements__card-heart{
@@ -108,45 +103,34 @@
     "lago";
   }
 
-  .elements__card-yosemite{
-    margin:auto;
-    grid-area:yosemite;
+  .elements__card{
     width:282px;
     height:361px;
+    border-radius:10px;
+    margin:auto;
+  }
+
+  .elements__card-yosemite{
+    grid-area:yosemite;
   }
 
   .elements__card-lake{
-    margin:auto;
     grid-area:lake;
-    width:282px;
-    height:361px;
   }
 
   .elements__card-mountains{
-    margin:auto;
     grid-area:mountains;
-    width:282px;
-    height:361px;
   }
 
   .elements__card-latemar{
-    margin:auto;
     grid-area:latemar;
-    width:282px;
-    height:361px;
   }
 
   .elements__card-vanoise{
-    margin:auto;
     grid-area:vanoise;
-    width:282px;
-    height:361px;
   }
 
   .elements__card-lago{
-    margin:auto;
     grid-area:lago;
-    width:282px;
-    height:361px;
   }
 }
