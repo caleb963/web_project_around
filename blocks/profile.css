@@ -69,21 +69,27 @@
 
 @media screen and (max-width:320px){
   .profile{
-    width:282px;
-    height:286px;
+    width:100%;
+    max-width:282px;
+    height:auto;
     margin-top:42px;
-    margin-left:19px;
+    margin-left:auto;
+    margin-right:auto;
+    display:flex;
+    flex-direction:column;
   }
 
   .profile__avatar{
-    margin-left:80px;
+    margin-left:auto;
+    margin-right:auto;
   }
 
   .profile__info{
-    width:282px;
-    height:50px;
-    margin-top:200px;
-    margin-left:-308px;
+    width:100%;
+    max-width:282px;
+    height:auto;
+    margin-left:auto;
+    margin-right:auto;
     grid-template-columns:repeat(2,1fr);
     grid-template-rows:repeat(2,1fr);
     grid-template-areas:
@@ -92,8 +98,9 @@
   }
 
   .profile__name{
-    width:196px;
-    height:22px;
+    width:100%;
+    max-width:196px;
+    height:auto;
     font-size:22px;
     line-height:27px;
     margin:auto;
@@ -102,11 +109,11 @@
 
   .profile__about{
     margin:auto;
-    width:282px;
-    height:14px;
+    width:100%;
+    height:auto;
     font-size:14px;
     line-height:17px;
-    margin-left:225px;
+    margin-top:12px;
     grid-area:about;
   }
 
@@ -115,7 +122,6 @@
     grid-area:button;
     width:18px;
     height:18px;
-    margin-left:-150px;
     margin-top:12px;
   }
 
@@ -126,10 +132,8 @@
 
   .profile__add-button{
     margin:auto;
-    margin-top:257px;
-    margin-left:-175px;
-    width:282px;
-    height:50px;
+    width:100%;
+    height:auto;
 
   }
 }

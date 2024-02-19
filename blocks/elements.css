@@ -94,10 +94,12 @@
 }
 @media screen and (max-width:320px){
   .elements{
-    width:282px;
-    height:2268px;
+    width:100%;
+    max-width:282px;
+    height:auto;
     margin-top:30px;
-    margin-left:19px;
+    margin-left:auto;
+    margin-right:auto;
     grid-template-columns:repeat(1, 1fr);
     grid-template-rows:repeat(6, 1fr);
     grid-template-areas:
@@ -110,8 +112,8 @@
   }
 
   .elements__card{
-    width:282px;
-    height:361px;
+    width:100%;
+    height:auto;
     border-radius:10px;
     margin:auto;
   }
