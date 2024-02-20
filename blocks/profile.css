@@ -105,6 +105,9 @@
     line-height:27px;
     margin:auto;
     grid-area:name;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
   }
 
   .profile__about{
@@ -115,6 +118,9 @@
     line-height:17px;
     margin-top:12px;
     grid-area:about;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
   }
 
   .profile__edit-button{
