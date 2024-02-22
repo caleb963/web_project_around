@@ -7,13 +7,9 @@
   margin-right:auto;
   border-radius:10px 10px 0px 0px;
   border:1px;
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  grid-template-rows:repeat(2, 1fr);
-  grid-gap:10px;
-  grid-template-areas:
-  "yosemite lake mountains"
-  "latemar vanoise lago";
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
 }
 
 .elements__card{
@@ -24,34 +20,10 @@
   margin:auto;
 }
 
-.elements__card-yosemite{
-  grid-area:yosemite;
-}
-
-.elements__card-lake{
-  grid-area:lake;
-}
-
-.elements__card-mountains{
-  grid-area:mountains;
-}
-
-.elements__card-latemar{
-  grid-area:latemar;
-}
-
-.elements__card-vanoise{
-  grid-area:vanoise;
-}
-
-.elements__card-lago{
-  grid-area:lago;
-}
 
 .elements__card-image{
   width:100%;
   max-width: 282px;
-  height:auto;
   border-radius:10px;
 }
 
@@ -100,15 +72,6 @@
     margin-top:30px;
     margin-left:auto;
     margin-right:auto;
-    grid-template-columns:repeat(1, 1fr);
-    grid-template-rows:repeat(6, 1fr);
-    grid-template-areas:
-    "yosemite"
-    "lake"
-    "mountains"
-    "latemar"
-    "vanoise"
-    "lago";
   }
 
   .elements__card{
@@ -116,29 +79,5 @@
     height:auto;
     border-radius:10px;
     margin:auto;
-  }
-
-  .elements__card-yosemite{
-    grid-area:yosemite;
-  }
-
-  .elements__card-lake{
-    grid-area:lake;
-  }
-
-  .elements__card-mountains{
-    grid-area:mountains;
-  }
-
-  .elements__card-latemar{
-    grid-area:latemar;
-  }
-
-  .elements__card-vanoise{
-    grid-area:vanoise;
-  }
-
-  .elements__card-lago{
-    grid-area:lago;
   }
 }
