@@ -18,56 +18,23 @@
       <img class ="profile__avatar" src="./images/profile__avatar.png" alt="Jacques Cousteau">
       <div class="profile__info">
         <div class="profile__title">
-        <h2 class ="profile__name">Jacques Cousteau</h2>
-        <div class="profile__edit-button"><img src="./images/Edit__Button.png" alt="Edit your profile button"></div>
+        <h2 class ="profile__name" id="profile-name">Jacques Cousteau</h2>
+        <div class="profile__edit-button" id="profile-edit-button"><img src="./images/Edit__Button.png" alt="Edit your profile button"></div>
         </div>
-        <h3 class ="profile__about">Explorer</h3>
+        <h3 class ="profile__about" id="profile-about">Explorer</h3>
       </div>
-        <a href="#"><img class="profile__add-button" id="profile__add-button" src="images/Add_Button.png" alt="add image to your profile button"></a>
+        <div class="profile__add-button" id="profile-add-button"><img src="images/Add_Button.png" alt="add image to your profile button"></div>
     </div>
     <section class="elements">
-      <div class="elements__card">
-        <img class="elements__card-image" src="./images/yosemite_image.png" alt="yosemite valley">
-        <div class="elements__card-description">
-        <h2 class="elements__card-title">Yosemite Valley</h2>
-        <button class="elements__card-heart"><img src="./images/like_button.png" alt="heart button"></button>
-      </div>
-        </div>
+     <template class="template__card">
         <div class="elements__card">
-          <img class="elements__card-image" src="./images/lake-louise_image.png" alt="lake louise">
+          <img class="elements__card-image" src="" alt="">
           <div class="elements__card-description">
-          <h2 class="elements__card-title">Lake Louise</h2>
-          <button class="elements__card-heart"><img src="./images/like_button.png" alt="heart button"></button>
-        </div>
+            <h2 class="elements__card-title"></h2>
+            <button class="element__card-heart"><img src="./images/like_button"></button>
           </div>
-          <div class="elements__card">
-            <img class="elements__card-image" src="./images/bald-mountains_image.png" alt="bald mountains">
-            <div class="elements__card-description">
-            <h2 class="elements__card-title">Bald Mountains</h2>
-            <button class="elements__card-heart"><img src="./images/like_button.png" alt="heart button"></button>
-            </div>
-            </div>
-            <div class="elements__card">
-              <img class="elements__card-image" src="./images/latemar_image.png" alt="latemar">
-              <div class="elements__card-description">
-              <h2 class="elements__card-title">Latemar</h2>
-              <button class="elements__card-heart"><img src="./images/like_button.png" alt="heart button"></button>
-              </div>
-              </div>
-              <div class="elements__card">
-                <img class="elements__card-image" src="./images/vanoise-national-park_image.png" alt="vanoise national park">
-                <div class="elements__card-description">
-                <h2 class="elements__card-title">Vanoise National Park</h2>
-                <button class="elements__card-heart"><img src="./images/like_button.png" alt="heart button"></button>
-              </div>
-                </div>
-                <div class="elements__card">
-                  <img class="elements__card-image" src="./images/lago-di-braies_image.png" alt="lago di braies">
-                  <div class="elements__card-description">
-                  <h2 class="elements__card-title">Lago di Braies</h2>
-                  <button class="elements__card-heart"><img src="./images/like_button.png" alt="heart button"></button>
-                </div>
-                  </div>
+        </div>
+     </template>
     </section>
     <footer class="footer">
       <p class="footer__text">© 2020 Around the U.S.</p>
@@ -83,11 +50,11 @@
     <div class="popup__close-button"><img src="./images/Close__Icon.png" alt="close form button" id="close-profile-form"></div>
   </div>
   <div class="popup" id="popup-add-card">
-    <form class="popup__edit-form" id="add-card-form">
+    <form class="popup__edit-form" id="card-form">
       <h2 class="popup__edit-form-title" >New Place</h2>
       <input class="popup__input-name"  id="input-card-title" type="text" minlength="2" maxlength="40" placeholder="Title"/>
       <input class="popup__input-about" id="input-card-url" type="text" minlength="2" maxlength="40" placeholder="url"/>
-      <button class="popup__input-submit" type="submit"  id="addcard-submit">Create</button>
+      <button class="popup__input-submit" type="submit"  id="card-submit">Create</button>
     </form>
     <div class="popup__close-button"><img src="./images/Close__Icon.png" alt="close form button" id="close-addcard-form"></div>
   </div>

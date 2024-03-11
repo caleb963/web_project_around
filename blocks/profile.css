@@ -49,9 +49,20 @@
   margin-left:20px;
 }
 
+.profile__edit-button:hover{
+  color:lightslategray;
+  cursor:pointer;
+}
+
 .profile__add-button{
   margin-right:auto;
 }
+
+.profile__add-button:hover{
+  color:lightslategray;
+  cursor:pointer;
+}
+
 @media screen and (max-width: 800px){
   .profile{
     font-size:24px;
