@@ -13,18 +13,35 @@
 }
 
 .elements__card{
-  width:100%;
-  max-width:282px;
-  height:auto;
+  width:282px;
+  height:361px;
   border-radius:10px;
   margin:auto;
-  background-color:white;
+  position:relative;
+}
+
+.elements__card-delete {
+  top:0;
+  right:0;
+  margin-right:18px;
+  margin-top:18px;
+  position:absolute;
+  background-color:transparent;
+  border:none;
+  padding:0;
+}
+
+.elements__card-delete:hover{
+  background-color:lightslategray;
+  cursor:pointer;
+
 }
 
 
+
 .elements__card-image{
-  width:100%;
-  max-width: 282px;
+  width: 282px;
+  height:282px;
   border-radius:10px;
 }
 
