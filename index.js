@@ -16,8 +16,10 @@ const inputCardTitle = document.querySelector("#input-card-title");
 const inputCardLink = document.querySelector("#input-card-url");
 const buttonSubmitCard = document.querySelector("#addcard-submit");
 const formCard = document.querySelector("#addcard-form");
-
-
+const popUpShowPicture = document.querySelector("#popup-show-picture");
+const closeImage = document.querySelector("#close-popup-image");
+const popUpTitle = document.querySelector(".popup__image-title");
+const popUpImage = document.querySelector(".popup__image")
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -64,6 +66,17 @@ function handleCloseCardForm () {
   popUpAddCard.classList.remove("popup__opener");
 }
 
+// open and closed popup image
+function handleOpenImage(title, link){
+  popUpImage.src = link;
+  popUpTitle.textContent = title;
+  popUpShowPicture.classList.add("popup__opener");
+}
+
+function handleCloseImage() {
+  popUpShowPicture.classList.remove("popup__opener");
+}
+
 function handleProfileSubmit (evt) {
   evt.preventDefault();
   profileName.textContent = inputProfileName.value;
@@ -84,6 +97,9 @@ function cardGenerator(title, link) {
   })
   deleteButton.addEventListener("click", function(){
     card.remove();
+  })
+  cardImage.addEventListener("click", function(){
+    handleOpenImage(title, link);
   })
 
   return card;
@@ -107,6 +123,7 @@ buttonProfile.addEventListener("click", handleOpenProfileForm);
 buttonCloseProfile.addEventListener("click", handleCloseProfileForm);
 buttonAddCard.addEventListener("click", handleOpenCardForm);
 buttonCloseCard.addEventListener("click", handleCloseCardForm);
+closeImage.addEventListener("click", handleCloseImage);
 
 formProfile.addEventListener("submit", handleProfileSubmit);
 formCard.addEventListener("submit", handleAddCardSubmit);

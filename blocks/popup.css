@@ -76,6 +76,18 @@
   color:lightslategray;
 }
 
+
+.popup__image{
+  width:433px;
+  height:540px;
+  left:40px;
+  top:136px;
+}
+
+.popup__image-title{
+  color:white;
+
+}
 @media screen and (min-width:320px) and (max-width:1279px){
   .popup{
     width:320px;
@@ -128,6 +140,10 @@
   height:26px;
  }
 
+ .popup__image{
+  width:240px;
+  height:299px;
+ }
 
 
 }
