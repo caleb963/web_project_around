@@ -72,12 +72,18 @@
 }
 
 .elements__card-heart{
-  background-color:white;
   border:none;
   padding:0;
   margin-right:10px;
+  background-color:transparent;
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-image: url(../images/like_button.png);
 }
 
+.elements__card-heart_active{
+  background-image: url(../images/like_button-black.png);
+}
 .elements__card-heart:hover{
   background-color:lightslategray;
   cursor:pointer;

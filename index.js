@@ -75,8 +75,17 @@ function cardGenerator(title, link) {
   const card = templateCard.content.querySelector(".elements__card").cloneNode(true);
   const cardImage = card.querySelector(".elements__card-image");
   const cardTitle = card.querySelector(".elements__card-title");
+  const likeButton = card.querySelector(".elements__card-heart");
+  const deleteButton = card.querySelector(".elements__card-delete");
   cardImage.src = link;
   cardTitle.textContent = title;
+  likeButton.addEventListener("click", function() {
+      likeButton.classList.toggle("elements__card-heart_active");
+  })
+  deleteButton.addEventListener("click", function(){
+    card.remove();
+  })
+
   return card;
 }
 
