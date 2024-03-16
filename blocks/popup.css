@@ -40,9 +40,23 @@
   height:27px;
 }
 
+.popup__input{
+  border:none;
+  border-bottom:1px solid rgb(201, 200, 200);
+  justify-content: space-between;
+}
+
+.popup__input::placeholder{
+  font-family:"Inter";
+  font-weight:400;
+  font-size:14px;
+  line-height:17px;
+}
+
 .popup__input-name{
   width:358px;
   height:27px;
+  margin-bottom:24px;
 }
 
 .popup__input-about{
@@ -77,11 +91,18 @@
   color:lightslategray;
 }
 
+.popup__image-container{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  position:relative;
+}
+
 .popup__image{
   max-width:75vw;
   max-height:75vh;
-  width:333px;
-  height:440px;
+  width:433px;
+  height:540px;
   left:40px;
   top:136px;
 }
@@ -158,6 +179,8 @@
  .popup__image{
   width:240px;
   height:299px;
+  left:40px;
+  top:136px;
  }
 
  .popup__image-title{

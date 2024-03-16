@@ -42,7 +42,7 @@
 .elements__card-image{
   width: 282px;
   height:282px;
-  border-radius:10px;
+  border-radius:10px 10px 0px 0px;
 }
 
 .elements__card-description{
@@ -79,6 +79,8 @@
   background-size:contain;
   background-repeat:no-repeat;
   background-image: url(../images/like_button.png);
+  width:20px;
+  height:20px;
 }
 
 .elements__card-heart_active{
