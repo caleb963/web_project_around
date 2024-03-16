@@ -124,10 +124,11 @@
   cursor:pointer;
   color:lightslategray;
 }
-@media screen and (max-width:320px){
+@media screen and (max-width:420px){
   .popup{
     width:320px;
     height:568px;
+    margin-left:45px;
   }
 
   .popup__edit-form{
@@ -179,8 +180,6 @@
  .popup__image{
   width:240px;
   height:299px;
-  left:40px;
-  top:136px;
  }
 
  .popup__image-title{

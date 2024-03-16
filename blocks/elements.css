@@ -1,6 +1,7 @@
 .elements{
-  width:100%;
-  max-width:880px;
+  /*width:100%;
+  max-width:880px;*/
+  padding:0px 129px;
   height:auto;
   margin-top:129px;
   margin-left:auto;
@@ -90,7 +91,14 @@
   background-color:lightslategray;
   cursor:pointer;
 }
-@media screen and (max-width:320px){
+
+@media screen and (max-width:880px){
+  .elements{
+    padding:0px 45px;
+  }
+}
+
+@media screen and (max-width:420px){
   .elements{
     width:100%;
     max-width:282px;
