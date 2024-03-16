@@ -4,4 +4,4 @@
 
 # On this project we use HTML,CSS and Javascript aplying the BEM methodology as equal we startt working with branches on git.for be more organized in every chanmge on our project.
 
-# https://github.com/caleb963/web_project_around
+# https://caleb963.github.io/web_project_around/
