@@ -44,18 +44,21 @@
   font-size:18px;
   line-height:22px;
   overflow:hidden;
-  text-overflow:ellispis;
+  text-overflow:ellipsis;
   white-space: nowrap;
 }
 
 .profile__edit-button{
   color:#FFFFFF;
   margin-left:20px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 
 .profile__edit-button:hover{
-  color:lightslategray;
   cursor:pointer;
+  background-image:url(../images/edit__button_hover.png);
 }
 
 .profile__add-button{
@@ -63,7 +66,7 @@
 }
 
 .profile__add-button:hover{
-  color:lightslategray;
+  background-image:url(../images/Add_Button_hover.png);
   cursor:pointer;
 }
 
