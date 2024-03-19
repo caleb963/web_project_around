@@ -92,15 +92,16 @@ function cardGenerator(title, link) {
   const deleteButton = card.querySelector(".elements__card-delete");
   cardImage.src = link;
   cardTitle.textContent = title;
+  //Reassigning Events
   likeButton.addEventListener("click", function() {
       likeButton.classList.toggle("elements__card-heart_active");
-  })
+  });
   deleteButton.addEventListener("click", function(){
     card.remove();
-  })
+  });
   cardImage.addEventListener("click", function(){
     handleOpenImage(title, link);
-  })
+  });
 
   return card;
 }
@@ -116,6 +117,9 @@ function handleAddCardSubmit(evt) {
   const newCard = cardGenerator(inputCardTitle.value, inputCardLink.value);
   cardArea.prepend(newCard);
   handleCloseCardForm();
+  // clear the form
+  inputCardTitle.value = "";
+  inputCardLink.value = "";
 }
 
 // events for open and closed

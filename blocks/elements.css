@@ -12,6 +12,7 @@
     display:flex;
     flex-wrap:wrap;
     gap:10px;
+    justify-content:space-between;
   }
 
   .elements__card{
@@ -20,6 +21,8 @@
     border-radius:10px;
     margin:auto;
     position:relative;
+    flex-basis: calc(33.33% -20px);
+    margin-bottom:20px;
   }
 
   .elements__card-delete {
