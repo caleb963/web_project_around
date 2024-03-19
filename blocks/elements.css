@@ -1,6 +1,4 @@
   .elements{
-    /*width:100%;
-    max-width:880px;*/
     min-height:70vh;
     padding:0px 129px;
     height:auto;
@@ -9,10 +7,9 @@
     margin-right:auto;
     border-radius:10px 10px 0px 0px;
     border:1px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    justify-content:space-between;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    grid-gap:20px;
   }
 
   .elements__card{
@@ -21,8 +18,6 @@
     border-radius:10px;
     margin:auto;
     position:relative;
-    flex-basis: calc(33.33% -20px);
-    margin-bottom:20px;
   }
 
   .elements__card-delete {
@@ -103,6 +98,7 @@
 @media screen and (max-width:880px){
   .elements{
     padding:0px 45px;
+    grid-template-columns:repeat(2, 1fr);
   }
 }
 
@@ -114,6 +110,7 @@
     margin-top:30px;
     margin-left:auto;
     margin-right:auto;
+    grid-template-columns:1fr;
   }
 
   .elements__card{
