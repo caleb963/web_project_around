@@ -18,6 +18,7 @@
     border-radius:10px;
     margin:auto;
     position:relative;
+    background-color:white;
   }
 
   .elements__card-delete {
@@ -95,6 +96,13 @@
   outline:none;
 }
 
+@media screen and (max-width:1015px){
+  .elements{
+    grid-template-columns:repeat(2, 1fr);
+  }
+
+}
+
 @media screen and (max-width:880px){
   .elements{
     padding:0px 45px;
@@ -102,21 +110,36 @@
   }
 }
 
+@media screen and (max-width:630px){
+  .elements{
+    grid-template-columns:1fr;
+  }
+}
+
 @media screen and (max-width:420px){
   .elements{
-    width:100%;
+    padding:0 20px;
+  }
+}
+
+
+@media screen and (max-width:320px){
+  .elements{
+    width: calc(100% - 20px);
+    padding:0px 5px;
     max-width:282px;
     height:auto;
     margin-top:30px;
     margin-left:auto;
     margin-right:auto;
     grid-template-columns:1fr;
+    box-sizing:border-box;
   }
 
   .elements__card{
     width:100%;
     height:auto;
     border-radius:10px;
-    margin:auto;
+    margin:10px 0px;
   }
 }

@@ -128,11 +128,10 @@
   border:none;
   outline:none;
 }
-@media screen and (max-width:420px){
+@media screen and (max-width:320px){
   .popup{
     width:320px;
     height:568px;
-    margin-left:45px;
   }
 
   .popup__edit-form{
