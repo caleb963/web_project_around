@@ -115,6 +115,7 @@ initialCards.forEach(function (element) {
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
   const newCard = cardGenerator(inputCardTitle.value, inputCardLink.value);
+  console.log(inputCardLink.value);
   cardArea.prepend(newCard);
   handleCloseCardForm();
   // clear the form
