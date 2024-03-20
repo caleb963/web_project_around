@@ -27,6 +27,7 @@
 
 
 .profile__name{
+  width:373px;
   margin:0;
   font-family:'Inter';
   font-weight:500;
@@ -38,6 +39,7 @@
 }
 
 .profile__about{
+  width:415px;
   margin:0;
   margin-top:16px;
   font-family:'Inter';
@@ -172,6 +174,7 @@
   }
 
   .profile__name{
+    width:282px;
     font-size:18px;
     line-height:22px;
     margin:auto;
@@ -181,6 +184,7 @@
   }
 
   .profile__about{
+    width:282px;
     text-align:center;
     font-size:14px;
     line-height:17px;
@@ -194,7 +198,7 @@
     margin:auto;
     width:18px;
     height:18px;
-    margin-left:10px;
+    margin-left:-150px;
   }
 
   .profile__edit-button:hover{

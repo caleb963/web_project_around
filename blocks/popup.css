@@ -123,6 +123,7 @@
 }
 
 .popup__image-close-button:hover{
+  background-image:url(../images/Close__Icon_hover.png);
   cursor:pointer;
   border:none;
   outline:none;
