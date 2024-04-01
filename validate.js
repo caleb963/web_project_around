@@ -1,5 +1,5 @@
 const showInputError = (formElement, inputElement, errorMessage) => {
-  const errorElement = formElement.querySelector(`.{inputElememt.id}-error`);
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add("form__input_type_error");
   errorElement.textContent = errorMessage;
   errorElement.classList.add("form__input-error_active");
@@ -13,6 +13,7 @@ const hideInputError = (formElement, inputElement) => {
 };
 
 checkInputValidity = (formElement, inputElement) => {
+  console.log("es valido el input?", inputElement.validity.valid)
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage);
   } else {
@@ -22,8 +23,7 @@ checkInputValidity = (formElement, inputElement) => {
 
 const setEventListeners = (formElement, settings) => {
   const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
-   console.log("valor inputs ->", inputList);
-  inputList.forEach((inputElement) => {
+     inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
       checkInputValidity(formElement, inputElement);
     });
@@ -32,7 +32,6 @@ const setEventListeners = (formElement, settings) => {
 
 const enableValidation = (settings) => {
   const formList = Array.from(document.querySelectorAll(settings.formSelector));
-  console.log("valor forms ->" , formList);
   formList.forEach((formElement) => {
     formElement.addEventListener("submit", function (evt) {
       evt.preventDefault();

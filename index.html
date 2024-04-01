@@ -46,7 +46,9 @@
     <form class="popup__edit-form" id="profile-form" novalidate>
       <h2 class="popup__edit-form-title">Edit profile</h2>
       <input class="popup__input popup__input-name" id ="profile-input-name" type="text"  minlength="2" maxlength="40" placeholder="First name, Last name"/>
+      <span class="profile-input-name-error"></span>
       <input class="popup__input popup__input-about" id ="profile-input-about" type="text" minlength="2" maxlength="200" placeholder="Ocupation"/>
+      <span class="profile-input-about-error"></span>
       <button class="popup__input-submit"  id ="profile-submit" type="submit">Save</button>
     </form>
   </div>
@@ -55,7 +57,9 @@
     <form class="popup__edit-form" id="addcard-form" novalidate>
       <h2 class="popup__edit-form-title">New Place</h2>
       <input class="popup__input popup__input-name"  id="input-card-title" type="text" minlength="2" maxlength="30" placeholder="Title"/>
+      <span class="input-card-title-error"></span>
       <input class="popup__input popup__input-about" id="input-card-url" type="text"  placeholder="url"/>
+      <span class="input-card-url-error"></span>
       <button class="popup__input-submit" type="submit"  id="addcard-submit">Create</button>
     </form>
   </div>
