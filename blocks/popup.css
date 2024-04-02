@@ -93,6 +93,11 @@
   cursor:pointer;
 }
 
+.popup__button__disabled{
+  background-color: #cccccc;
+  cursor:not-allowed;
+}
+
 .popup__close-button{
   margin-left:460px;
 }
