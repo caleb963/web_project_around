@@ -55,12 +55,16 @@ function handleOpenProfileForm () {
   popUpProfile.classList.add("popup__opener");
    // change the popup display:block
   overlay.style.display = "block";
+  document.addEventListener("click", handleCloseOutside);
+  document.addEventListener("keydown", handleCloseOnEscape);
 }
 
 function handleCloseProfileForm () {
   popUpProfile.classList.remove("popup__opener");
   // change the popup for display:none;
   overlay.style.display = "none";
+  document.removeEventListener("click", handleCloseOutside);
+  document.removeEventListener("keydown", handleCloseOnEscape);
 }
 
 // open and closed card form
@@ -69,12 +73,16 @@ function handleOpenCardForm () {
   // change the popup display:block
   overlay.style.display = "block";
   console.log("open card form");
+  document.addEventListener("click", handleCloseOutside);
+  document.addEventListener("keydown", handleCloseOnEscape);
 }
 
 function handleCloseCardForm () {
   popUpAddCard.classList.remove("popup__opener");
   // change the popup for display:none
   overlay.style.display = "none";
+  document.removeEventListener("click", handleCloseOutside);
+  document.removeEventListener("keydown", handleCloseOnEscape);
 }
 
 // open and closed popup image
@@ -82,10 +90,15 @@ function handleOpenImage(title, link){
   popUpImage.src = link;
   popUpTitle.textContent = title;
   popUpShowPicture.classList.add("popup__opener");
+  document.addEventListener("click", handleCloseOutside);
+  document.addEventListener("keydown", handleCloseOnEscape);
+
 }
 
 function handleCloseImage() {
   popUpShowPicture.classList.remove("popup__opener");
+  document.removeEventListener("click", handleCloseOutside);
+  document.removeEventListener("keydown", handleCloseOnEscape);
 }
 
 function handleProfileSubmit (evt) {
@@ -145,7 +158,24 @@ formProfile.addEventListener("submit", handleProfileSubmit);
 formCard.addEventListener("submit", handleAddCardSubmit);
 
 // close the form when clicking outside
-overlay.addEventListener("click", function() {
+
+function handleCloseOutside(evt) {
+  if(evt.target.classList.contains("popup__opener")){
   handleCloseProfileForm();
   handleCloseCardForm();
-});
+  handleCloseImage();
+  }
+};
+
+// close the form with escape key
+
+function handleCloseOnEscape(evt) {
+  if(evt.key === "Escape"){
+    handleCloseProfileForm();
+    handleCloseCardForm();
+    handleCloseImage();
+  }
+};
+
+
+
