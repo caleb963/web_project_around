@@ -20,6 +20,7 @@ const popUpShowPicture = document.querySelector("#popup-show-picture");
 const closeImage = document.querySelector("#close-popup-image");
 const popUpTitle = document.querySelector(".popup__image-title");
 const popUpImage = document.querySelector(".popup__image")
+const overlay = document.querySelector("#overlay");
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -47,23 +48,33 @@ const initialCards = [
   }
 ];
 
+
+
 // open and closed profile form
 function handleOpenProfileForm () {
   popUpProfile.classList.add("popup__opener");
+   // change the popup display:block
+  overlay.style.display = "block";
 }
 
 function handleCloseProfileForm () {
   popUpProfile.classList.remove("popup__opener");
+  // change the popup for display:none;
+  overlay.style.display = "none";
 }
 
 // open and closed card form
 function handleOpenCardForm () {
   popUpAddCard.classList.add("popup__opener");
+  // change the popup display:block
+  overlay.style.display = "block";
   console.log("open card form");
 }
 
 function handleCloseCardForm () {
   popUpAddCard.classList.remove("popup__opener");
+  // change the popup for display:none
+  overlay.style.display = "none";
 }
 
 // open and closed popup image
@@ -132,3 +143,9 @@ closeImage.addEventListener("click", handleCloseImage);
 
 formProfile.addEventListener("submit", handleProfileSubmit);
 formCard.addEventListener("submit", handleAddCardSubmit);
+
+// close the form when clicking outside
+overlay.addEventListener("click", function() {
+  handleCloseProfileForm();
+  handleCloseCardForm();
+});

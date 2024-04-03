@@ -50,6 +50,7 @@ const setEventListeners = (formElement, settings) => {
   });
 };
 
+
 const enableValidation = (settings) => {
   const formList = Array.from(document.querySelectorAll(settings.formSelector));
   formList.forEach((formElement) => {
@@ -68,4 +69,4 @@ enableValidation({
   inactiveButtonClass: "popup__button__disabled",
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visible"
-}); // ---> ejecuta enableValidation
+}); // ---> execute enable validation
