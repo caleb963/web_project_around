@@ -1,8 +1,8 @@
-class Card {
+export class Card {
   constructor(title, link, template) {
     this.title = title;
     this.link = link;
-    this.template = document.querySelector(templateSelector);
+    this.template = document.querySelector(template);
 
   }
     _getCardClone() {
@@ -12,19 +12,35 @@ class Card {
     _handleLike (event){
       event.target.classList.toggle("card__like_active");
     }
-    _handleDislike () {}
-    _handleSetLike() {}
+    _handleDislike (event) {
+      event.target.classList.toggle("card__dislike_active");
+    }
+    _handleSetLike(event) {
+      event.target.classList.add("card__like_active");
+    }
     _handleRemoveCard(event) {
       event.target.closest(".card").remove();
     }
-    _handleOpenImageCard() {}
-    _setProperties() {}
+    _handleOpenImageCard(card) {
+      const cardImage = card.querySelector(".card__image");
+      this._handleOpenImageCard(this.title, cardImage.src);
+    }
+    _setProperties(card) {
+      const cardImage = card.querySelector(".card__image");
+      const cardTitle = card.querySelector(".card__title");
+
+      cardImage.src = this.link;
+      cardImage.alt = `Image of ${this.title}`;
+      cardTitle.textContent = this.title;
+    }
     _setEventListeners(card) {
       const likeButton = card.querySelector(".card__like");
       const deleteButton = card.querySelector(".card__delete");
+      const cardImage = card.querySelector(".card__image");
 
-      likeButton.addEventListener("click", this._handleLike);
-      deleteButton.addEventListener("click", this._handleRemoveCard);
+      likeButton.addEventListener("click", this._handleLike.bind(this));
+      deleteButton.addEventListener("click", this._handleRemoveCard.bind(this));
+      cardImage.addEventListener("click", () => this._handleOpenImageCard(card));
     }
     generateCard() {
      const card = this._getCardClone();

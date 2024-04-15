@@ -1,4 +1,5 @@
 import{ FormValidator } from "./FormValidator.js"
+import{Card} from "./Card.js"
 
 const popUpProfile = document.querySelector("#popup-profile");
 const buttonProfile = document.querySelector("#profile-edit-button");
@@ -135,8 +136,9 @@ function cardGenerator(title, link) {
 
 initialCards.forEach(function (element) {
   console.log(element);
-  const newCard = cardGenerator(element.name, element.link);
-  cardArea.append(newCard);
+  const card = new Card = cardGenerator(element.name, element.link, ".template__card");
+  const cardElement = card.generateCard();
+  cardArea.append(cardElement);
 })
 
 function handleAddCardSubmit(evt) {
