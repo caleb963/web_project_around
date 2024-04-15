@@ -1,3 +1,5 @@
+import{ FormValidator } from "./FormValidator.js"
+
 const popUpProfile = document.querySelector("#popup-profile");
 const buttonProfile = document.querySelector("#profile-edit-button");
 const buttonCloseProfile = document.querySelector("#close-profile-form");
@@ -178,5 +180,18 @@ function handleCloseOnEscape(evt) {
   }
 };
 
+const settings = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__save-button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__type_input_error",
+  errorClass: "popup__error_visible",
+}
+
+const validateCardForm = new FormValidator(formCard, settings);
+validateCardForm.enableValidation();
+const validateProfileForm = new FormValidator(formElement, settings);
+validateProfileForm.enableValidation();
 
 

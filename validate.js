@@ -13,8 +13,7 @@ const hideInputError = (formElement, inputElement, settings) => {
   errorElement.textContent = "";
 };
 
-checkInputValidity = (formElement, inputElement, settings) => {
-  console.log("es valido el input?", inputElement.validity.valid)
+const checkInputValidity = (formElement, inputElement, settings) => {
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage, settings);
   } else {
@@ -40,7 +39,7 @@ const setEventListeners = (formElement, settings) => {
   const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
   const buttonElement = formElement.querySelector(settings.submitButtonSelector);
 
-  toggleButtonState(inputList,buttonElement,settings);
+  toggleButtonState(this.inputList,buttonElement,settings);
 
      inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
