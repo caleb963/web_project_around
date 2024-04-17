@@ -1,5 +1,7 @@
 import{ FormValidator } from "./FormValidator.js"
 import{Card} from "./Card.js"
+import { handleOpenImage, handleCloseImage, handleOpenProfileForm, handleCloseProfileForm, handleOpenCardForm, handleCloseCardForm} from "./utils.js";
+
 
 const popUpProfile = document.querySelector("#popup-profile");
 const buttonProfile = document.querySelector("#profile-edit-button");
@@ -98,6 +100,7 @@ function handleOpenImage(title, link){
 
 }
 
+
 function handleCloseImage() {
   popUpShowPicture.classList.remove("popup__opener");
   document.removeEventListener("click", handleCloseOutside);
@@ -108,7 +111,7 @@ function handleProfileSubmit (evt) {
   evt.preventDefault();
   profileName.textContent = inputProfileName.value;
   profileAbout.textContent = inputProfileAbout.value;
-  handleCloseProfileForm();
+  handleCloseProfileForm(popUpProfile, overlay, handleCloseOutside, handleCloseOnEscape);
 }
 
 function cardGenerator(title, link) {
@@ -136,6 +139,7 @@ function cardGenerator(title, link) {
 
 initialCards.forEach(function (element) {
   console.log(element);
+  // apply class card in index
   const card = new Card = cardGenerator(element.name, element.link, ".template__card");
   const cardElement = card.generateCard();
   cardArea.append(cardElement);
@@ -146,16 +150,16 @@ function handleAddCardSubmit(evt) {
   const newCard = cardGenerator(inputCardTitle.value, inputCardLink.value);
   console.log(inputCardLink.value);
   cardArea.prepend(newCard);
-  handleCloseCardForm();
+  handleCloseCardForm(popUpAddCard, overlay, handleCloseOutside, handleCloseOutside, handleCloseOnEscape);
   // clear the form
   inputCardTitle.value = "";
   inputCardLink.value = "";
 }
 
 // events for open and closed
-buttonProfile.addEventListener("click", handleOpenProfileForm);
+buttonProfile.addEventListener("click", () =>  handleOpenProfileForm(popUpProfile, overlay, handleCloseOutside, handleCloseOnEscape));
 buttonCloseProfile.addEventListener("click", handleCloseProfileForm);
-buttonAddCard.addEventListener("click", handleOpenCardForm);
+buttonAddCard.addEventListener("click", () =>  handleOpenCardForm(popUpAddCard, overlay, handleCloseOutside, handleCloseOnEscape));
 buttonCloseCard.addEventListener("click", handleCloseCardForm);
 closeImage.addEventListener("click", handleCloseImage);
 
