@@ -25,3 +25,4 @@ export function handleOpenCardForm(popUpAddCard) {
 export function handleCloseCardForm(popUpAddCard) {
   popUpAddCard.classList.remove("popup__opener");
 }
+

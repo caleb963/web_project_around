@@ -38,8 +38,8 @@ export class FormValidator {
       return !inputElement.validity.valid;
     });
   }
-  _toggleButtonState(){
-    if(this._hasInvalidInput()){
+  _toggleButtonState(inputList, buttonElement, { inactiveButtonClass}){
+    if(this._hasInvalidInput(inputList)){
       this.buttonElement.classList.add(this.inactiveButtonClass);
       this.buttonElement.disabled = true;
     }else{

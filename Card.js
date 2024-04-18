@@ -23,7 +23,7 @@ export class Card {
     }
     _handleOpenImageCard(card) {
       const cardImage = card.querySelector(".card__image");
-      this._handleOpenImageCard(this.title, cardImage.src);
+      openImage(this.title, cardImage.src);
     }
     _setProperties(card) {
       const cardImage = card.querySelector(".card__image");

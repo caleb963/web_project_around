@@ -54,64 +54,11 @@ const initialCards = [
 ];
 
 
-
-// open and closed profile form
-function handleOpenProfileForm () {
-  popUpProfile.classList.add("popup__opener");
-   // change the popup display:block
-  overlay.style.display = "block";
-  document.addEventListener("click", handleCloseOutside);
-  document.addEventListener("keydown", handleCloseOnEscape);
-}
-
-function handleCloseProfileForm () {
-  popUpProfile.classList.remove("popup__opener");
-  // change the popup for display:none;
-  overlay.style.display = "none";
-  document.removeEventListener("click", handleCloseOutside);
-  document.removeEventListener("keydown", handleCloseOnEscape);
-}
-
-// open and closed card form
-function handleOpenCardForm () {
-  popUpAddCard.classList.add("popup__opener");
-  // change the popup display:block
-  overlay.style.display = "block";
-  console.log("open card form");
-  document.addEventListener("click", handleCloseOutside);
-  document.addEventListener("keydown", handleCloseOnEscape);
-}
-
-function handleCloseCardForm () {
-  popUpAddCard.classList.remove("popup__opener");
-  // change the popup for display:none
-  overlay.style.display = "none";
-  document.removeEventListener("click", handleCloseOutside);
-  document.removeEventListener("keydown", handleCloseOnEscape);
-}
-
-// open and closed popup image
-function handleOpenImage(title, link){
-  popUpImage.src = link;
-  popUpTitle.textContent = title;
-  popUpShowPicture.classList.add("popup__opener");
-  document.addEventListener("click", handleCloseOutside);
-  document.addEventListener("keydown", handleCloseOnEscape);
-
-}
-
-
-function handleCloseImage() {
-  popUpShowPicture.classList.remove("popup__opener");
-  document.removeEventListener("click", handleCloseOutside);
-  document.removeEventListener("keydown", handleCloseOnEscape);
-}
-
 function handleProfileSubmit (evt) {
   evt.preventDefault();
   profileName.textContent = inputProfileName.value;
   profileAbout.textContent = inputProfileAbout.value;
-  handleCloseProfileForm(popUpProfile, overlay, handleCloseOutside, handleCloseOnEscape);
+  handleCloseProfileForm();
 }
 
 function cardGenerator(title, link) {
@@ -140,9 +87,8 @@ function cardGenerator(title, link) {
 initialCards.forEach(function (element) {
   console.log(element);
   // apply class card in index
-  const card = new Card = cardGenerator(element.name, element.link, ".template__card");
-  const cardElement = card.generateCard();
-  cardArea.append(cardElement);
+  const card = cardGenerator(element.name, element.link, ".template__card");
+  cardArea.append(card);
 })
 
 function handleAddCardSubmit(evt) {
@@ -150,19 +96,18 @@ function handleAddCardSubmit(evt) {
   const newCard = cardGenerator(inputCardTitle.value, inputCardLink.value);
   console.log(inputCardLink.value);
   cardArea.prepend(newCard);
-  handleCloseCardForm(popUpAddCard, overlay, handleCloseOutside, handleCloseOutside, handleCloseOnEscape);
+  handleCloseCardForm(popUpAddCard, overlay, handleCloseOutside, handleCloseOnEscape);
   // clear the form
   inputCardTitle.value = "";
   inputCardLink.value = "";
 }
 
 // events for open and closed
-buttonProfile.addEventListener("click", () =>  handleOpenProfileForm(popUpProfile, overlay, handleCloseOutside, handleCloseOnEscape));
+buttonProfile.addEventListener("click", handleOpenProfileForm);
 buttonCloseProfile.addEventListener("click", handleCloseProfileForm);
-buttonAddCard.addEventListener("click", () =>  handleOpenCardForm(popUpAddCard, overlay, handleCloseOutside, handleCloseOnEscape));
+buttonAddCard.addEventListener("click", handleOpenCardForm);
 buttonCloseCard.addEventListener("click", handleCloseCardForm);
 closeImage.addEventListener("click", handleCloseImage);
-
 formProfile.addEventListener("submit", handleProfileSubmit);
 formCard.addEventListener("submit", handleAddCardSubmit);
 
