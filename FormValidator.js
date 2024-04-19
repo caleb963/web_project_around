@@ -1,6 +1,8 @@
 export class FormValidator {
   constructor(formElement, settings) {
     this.formElement = formElement;
+    this._settings = settings;
+    this._submitButton = this._formElement.querySelector(this._settings.submitButtonSelector);
     this.formSelector = settings.formSelector;
     this.inputSelector = settings.inputSelector;
     this.submitButtonSelector = settings.submitButtonSelector;
@@ -14,15 +16,19 @@ export class FormValidator {
       this.formElement.querySelectorAll(this.inputSelector)
       );
   }
+
+
+
+
   _showInputError(inputElement) {
     const errorElement = this.formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.add(this.inputErrorClass);
+    inputElement.classList.add(this._settings.inputErrorClass);
     errorElement.textContent = inputElement.validationMessage;
-    errorElement.classList.add(this.errorClass);
+    errorElement.classList.add(this._settings.errorClass);
   }
   _hideInputError(inputElement) {
     const errorElement = this.formElement.querySelector(`${inputElement.id}-error`);
-    inputElement.classList.remove(this.inputErrorClass);
+    inputElement.classList.remove(this._settings.inputErrorClass);
     errorElement.classList.remove(this.errorClass);
     errorElement.textContent = "";
   }
@@ -38,13 +44,13 @@ export class FormValidator {
       return !inputElement.validity.valid;
     });
   }
-  _toggleButtonState(inputList, buttonElement, { inactiveButtonClass}){
-    if(this._hasInvalidInput(inputList)){
-      this.buttonElement.classList.add(this.inactiveButtonClass);
-      this.buttonElement.disabled = true;
+  _toggleButtonState(){
+    if(this._hasInvalidInput()){
+      this._submitButton.classList.add(this._settings.inactiveButtonClass);
+      this._submitButton.disabled = true;
     }else{
-      this.buttonElement.classList.remove(this.inactiveButtonClass);
-      this.buttonElement.disabled = false;
+      this.submitButton.classList.remove(this._settings.inactiveButtonClass);
+      this.submitButton.disabled = false;
     }
   }
   _setEventListeners() {

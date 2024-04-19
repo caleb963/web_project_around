@@ -131,6 +131,11 @@ function handleCloseOnEscape(evt) {
   }
 };
 
+
+window.addEventListener("DOMContentLoaded", (event) => {
+
+
+const formElement = document.querySelector(".popup__form");
 const settings = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
@@ -140,9 +145,26 @@ const settings = {
   errorClass: "popup__error_visible",
 }
 
-const validateCardForm = new FormValidator(formCard, settings);
-validateCardForm.enableValidation();
-const validateProfileForm = new FormValidator(formElement, settings);
-validateProfileForm.enableValidation();
+if (formElement) {
+  const validateProfileForm = new FormValidator(formElement, settings);
+  validateProfileForm.enableValidation();
+}
 
+const popupProfile = document.querySelector(".popup_type_edit");
+if (popupProfile) {
+  const formValidatorProfile = new FormValidator(popupProfile, settings);
+  formValidatorProfile.enableValidation();
+}
 
+const popupCard = document.querySelector(".popup_type_new-card");
+if (popupCard) {
+  const formValidatorCard = new FormValidator(popupCard, settings);
+  formValidatorCard.enableValidation();
+}
+
+const popupAvatar = document.querySelector(".popup_type_avatar");
+if (popupAvatar) {
+  const formValidatorAvatar = new FormValidator(popupAvatar, settings);
+  formValidatorAvatar.enableValidation();
+}
+});
