@@ -9,13 +9,17 @@ export function handleCloseImage(popUpShowPicture){
 }
 
 export function handleOpenProfileForm(popUpProfile, profileName, profileAbout, inputProfileName, inputProfileAbout) {
+  if (profileName && profileAbout && inputProfileName && inputProfileAbout && popUpProfile) {
   inputProfileName.value = profileName.textContent;
   inputProfileAbout.value = profileAbout.textContent;
   popUpProfile.classList.add("popup__opener");
+  }else {
+    console.error("one or more elements are missing from the DOM");
+  }
 }
 
 export function handleCloseProfileForm(popUpProfile) {
-  popUpProfile.classList.remove9("popup__opener");
+  popUpProfile.classList.remove("popup__opener");
 }
 
 export function handleOpenCardForm(popUpAddCard) {
