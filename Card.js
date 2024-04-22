@@ -9,11 +9,24 @@ export default class Card {
     this.card = this.template.cloneNode(true).content.querySelector(".card");
   }
 
-  _handleLike(){}
-  _handleDislike(){}
+  _handleLike = () =>{
+    const likeButton = this.card.querySelector(".elements__card-heart");
+    likeButton.classList.toggle("elements__card-heart_active");
+  }
+
+  _handleDislike = () => {
+    const dislikeButton = this.card.querySelector(".elements__card-heart");
+    dislikeButton.classList.toggle("elements__card-heart_active");
+  }
   _handleSetLike(){}
-  _handleRemoveCard(){}
-  _handleOpenImageCard(){}
+
+  _handleRemoveCard = () =>{
+    this.card.remove();
+  }
+  _handleOpenImageCard = () => {
+    const cardImage = this.card.querySelector(".card__image");
+    this._handleOpenImageCard(this.title, cardImage.src);
+  }
 
   _setProperties(){
     this.card.querySelector(".card__title").textContent = this.title;

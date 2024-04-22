@@ -90,7 +90,7 @@
   background-image: url(../images/like_button-black.png);
 }
 .elements__card-heart:hover{
-  background-image: url(../images/like__button-hover);
+  background-image: url(../images/like__button-hover.png);
   cursor:pointer;
   border:none;
   outline:none;
