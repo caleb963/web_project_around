@@ -40,16 +40,15 @@ const setEventListeners = (formElement, settings) => {
   const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
   const buttonElement = formElement.querySelector(settings.submitButtonSelector);
 
-  toggleButtonState(this.inputList,buttonElement,settings);
+  toggleButtonState(inputList,buttonElement,settings);
 
-     this.inputList.forEach((inputElement) => {
+     inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
       checkInputValidity(formElement, inputElement, settings);
       toggleButtonState(inputList, buttonElement, settings);
     });
   });
 };
-
 
 const enableValidation = (settings) => {
   const formList = Array.from(document.querySelectorAll(settings.formSelector));
@@ -69,4 +68,4 @@ enableValidation({
   inactiveButtonClass: "popup__button__disabled",
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visible"
-}); // ---> execute enable validation
+}); // ---> ejecuta enableValidation
