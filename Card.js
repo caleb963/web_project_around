@@ -6,7 +6,7 @@ export default class Card {
   }
 
   _getCardClone(){
-    this.card = this.template.cloneNode(true).content.querySelector(".card");
+    this.card = this.template.content(true).content.querySelector(".elements__card").cloneNode(true);
   }
 
   _handleLike = () =>{

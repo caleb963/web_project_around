@@ -17,23 +17,23 @@ export default class FormValidator {
 
   _showInputError(inputElement) {
     // logic to show message error\
-    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    const errorElement = this.formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(this.inputErrorClass);
-    errorElement.textContent = errorMessage;
+    errorElement.textContent = inputElement.validationMessage;
     errorElement.classList.add(this.errorClass);
   }
   _hideInputError(inputElement) {
     // logic to hide message error
-    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    const errorElement = this.formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove(this.inputErrorClass);
     errorElement.classList.remove(this.errorClass);
     errorElement.textContent = "";
   }
   _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid){
-      this._showInputError();
+      this._showInputError(inputElement);
     }else {
-      this._hideInputError();
+      this._hideInputError(inputElement);
     }
   }
   _hasInvalidInput() {
@@ -53,9 +53,14 @@ export default class FormValidator {
   _setEventListeners() {
     this.formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
-    })
-    this._toggleButtonState();
-    this._checkInputValidity();
+    });
+    this.inputList.forEach((inputElement) => {
+      inputElement.addEventListener("input", () => {
+        this._toggleButtonState();
+        this._checkInputValidity();
+      });
+    });
+
   }
   enableValidation() {
     this._setEventListeners();
