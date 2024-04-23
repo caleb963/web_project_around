@@ -1,3 +1,6 @@
+const formProfileSubmit = document.querySelector("#profile-submit");
+const buttonSubmitCard = document.querySelector("#addcard-submit");
+
 // Function to open the profile form
 function handleOpenProfileForm() {
   popUpProfile.classList.add("popup__opener");
@@ -46,6 +49,24 @@ function handleCloseImage() {
   document.removeEventListener("keydown", handleCloseOnEscape);
 }
 
+function handleProfileSubmit (evt) {
+  evt.preventDefault();
+  profileName.textContent = inputProfileName.value;
+  profileAbout.textContent = inputProfileAbout.value;
+  handleCloseProfileForm();
+}
+
+function handleAddCardSubmit(evt) {
+  evt.preventDefault();
+  const newCard = cardGenerator(inputCardTitle.value, inputCardLink.value);
+  console.log(inputCardLink.value);
+  cardArea.prepend(newCard);
+  handleCloseCardForm();
+  // clear the form
+  inputCardTitle.value = "";
+  inputCardLink.value = "";
+}
+
 // function to handle closing forms when clicking outside or pressing escape key
 function handleCloseOutside(evt) {
   if(evt.target.classList.contains("popup__opener")){
@@ -64,4 +85,4 @@ function handleCloseOnEscape(evt) {
   }
 }
 
-export default{ handleOpenProfileForm, handleCloseProfileForm, handleOpenCardForm, handleCloseCardForm, handleOpenImage, handleCloseImage, handleCloseOutside, handleCloseOnEscape};
+export default{ handleOpenProfileForm, handleCloseProfileForm, handleOpenCardForm, handleCloseCardForm, handleOpenImage, handleCloseImage,handleProfileSubmit, handleAddCardSubmit, handleCloseOutside, handleCloseOnEscape};

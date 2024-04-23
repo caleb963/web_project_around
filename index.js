@@ -9,7 +9,6 @@ const profileName = document.querySelector(".profile__name");
 const profileAbout = document.querySelector(".profile__about");
 const inputProfileName = document.querySelector("#profile-input-name");
 const inputProfileAbout = document.querySelector("#profile-input-about");
-const formProfileSubmit = document.querySelector("#profile-submit");
 const formProfile = document.querySelector("#profile-form");
 const popUpAddCard = document.querySelector("#popup-add-card");
 const buttonAddCard = document.querySelector("#profile-add-button");
@@ -18,7 +17,6 @@ const templateCard = document.querySelector(".template__card");
 const cardArea = document.querySelector(".elements");
 const inputCardTitle = document.querySelector("#input-card-title");
 const inputCardLink = document.querySelector("#input-card-url");
-const buttonSubmitCard = document.querySelector("#addcard-submit");
 const formCard = document.querySelector("#addcard-form");
 const popUpShowPicture = document.querySelector("#popup-show-picture");
 const closeImage = document.querySelector("#close-popup-image");
@@ -136,7 +134,7 @@ function cardGenerator(title, link) {
 }
 
 initialCards.forEach(function (element) {
-  console.log(element);
+
   const newCard = cardGenerator(element.name, element.link);
   cardArea.append(newCard);
 })
@@ -181,3 +179,14 @@ function handleCloseOnEscape(evt) {
     handleCloseImage();
   }
 };
+
+const profileFormValidation = new FormValidator(formProfile, {
+  formSelector: ".popup__edit-form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__input-submit",
+  inactiveButtonClass: "popup__button__disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
+});
+
+profileFormValidation.enableValidation()
