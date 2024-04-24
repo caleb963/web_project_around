@@ -11,17 +11,12 @@ export default class Card {
   }
 
   _getCardClone(){
-   return  this.card = this.template.content(true).content.querySelector(".elements__card").cloneNode(true);
+   return  this.card = this.template.content.querySelector(".elements__card").cloneNode(true);
   }
 
   _handleLike = () =>{
     const likeButton = this.card.querySelector(".elements__card-heart");
     likeButton.classList.toggle("elements__card-heart_active");
-  }
-
-  _handleDislike = () => {
-    const dislikeButton = this.card.querySelector(".elements__card-heart");
-    dislikeButton.classList.toggle("elements__card-heart_active");
   }
 
   _handleRemoveCard = () =>{
@@ -40,7 +35,6 @@ export default class Card {
   }
    setEventListeners(){
     this.card.querySelector(".elements__card-heart").addEventListener("click", this._handleLike);
-    this.card.querySelector(".elements__card-heart").addEventListener("click", this._handleDislike);
     this.card.querySelector(".elements__card-delete").addEventListener("click", this._handleRemoveCard);
     this.card.querySelector(".elements__card-image").addEventListener("click", this._handleOpenImageCard);
    }
