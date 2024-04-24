@@ -1,5 +1,9 @@
 const formProfileSubmit = document.querySelector("#profile-submit");
 const buttonSubmitCard = document.querySelector("#addcard-submit");
+const popUpTitle = document.querySelector(".popup__image-title");
+const popUpImage = document.querySelector(".popup__image")
+const popUpShowPicture = document.querySelector("#popup-show-picture");
+
 
 // Function to open the profile form
 function handleOpenProfileForm() {
@@ -34,7 +38,7 @@ function handleCloseCardForm() {
 }
 
 // Function to open the popup image
-function handleOpenImage(title, link) {
+export function handleOpenImage(title, link) {
   popUpImage.src = link;
   popUpTitle.textContent = title;
   popUpShowPicture.classList.add("popup__opener");
@@ -85,4 +89,4 @@ function handleCloseOnEscape(evt) {
   }
 }
 
-export default{ handleOpenProfileForm, handleCloseProfileForm, handleOpenCardForm, handleCloseCardForm, handleOpenImage, handleCloseImage,handleProfileSubmit, handleAddCardSubmit, handleCloseOutside, handleCloseOnEscape};
+//export { handleOpenProfileForm, handleCloseProfileForm, handleOpenCardForm, handleCloseCardForm, handleOpenImage, handleCloseImage,handleProfileSubmit, handleAddCardSubmit, handleCloseOutside, handleCloseOnEscape};

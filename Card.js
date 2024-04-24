@@ -1,3 +1,4 @@
+import {handleOpenImage} from "./utils.js";
 export default class Card {
   constructor(title, link, template){
     this.title = title;
@@ -23,7 +24,7 @@ export default class Card {
   }
   _handleOpenImageCard = () => {
     const cardImage = this.card.querySelector(".elements__card-image");
-    _handleOpenImageCard(this.title, cardImage.src);
+    handleOpenImage(this.title, cardImage.src);
   }
 
   _setProperties(){
@@ -32,10 +33,11 @@ export default class Card {
     cardImage.src = this.link;
     cardImage.alt = this.title;
   }
-   setEventListeners(){
+   setEventListeners() {
     this.card.querySelector(".elements__card-heart").addEventListener("click", this._handleLike);
     this.card.querySelector(".elements__card-delete").addEventListener("click", this._handleRemoveCard);
-    this.card.querySelector(".elements__card-image").addEventListener("click", () => this._handleOpenImageCard(this.title, this.link));
+    this.card.querySelector(".elements__card-image").addEventListener("click", () => { this._handleOpenImageCard(this.title, this.link);
+   });
    }
 
    generateCard(){
