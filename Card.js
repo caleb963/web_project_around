@@ -3,10 +3,15 @@ export default class Card {
     this.title = title;
     this.link = link;
     this.template = template;
+
+    this._handleLike = () => this._handleLike();
+    this._handleDislike =() => this._handleDislike();
+    this._handleRemoveCard = () => this._handleRemoveCard();
+    this._handleOpenImageCard = () => this._handleOpenImageCard();
   }
 
   _getCardClone(){
-    this.card = this.template.content(true).content.querySelector(".elements__card").cloneNode(true);
+   return  this.card = this.template.content(true).content.querySelector(".elements__card").cloneNode(true);
   }
 
   _handleLike = () =>{
@@ -24,7 +29,7 @@ export default class Card {
   }
   _handleOpenImageCard = () => {
     const cardImage = this.card.querySelector(".elements__card-image");
-    this._handleOpenImageCard(this.title, cardImage.src);
+    _handleOpenImageCard(this.title, cardImage.src);
   }
 
   _setProperties(){

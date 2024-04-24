@@ -110,40 +110,38 @@ function handleProfileSubmit (evt) {
   handleCloseProfileForm();
 }
 
-function cardGenerator(title, link) {
-  const card = templateCard.content.querySelector(".elements__card").cloneNode(true);
-  const cardImage = card.querySelector(".elements__card-image");
-  const cardTitle = card.querySelector(".elements__card-title");
-  const likeButton = card.querySelector(".elements__card-heart");
-  const deleteButton = card.querySelector(".elements__card-delete");
-  cardImage.src = link;
-  cardImage.alt = title;
-  cardTitle.textContent = title;
+//function cardGenerator(title, link) {
+ // const card = templateCard.content.querySelector(".elements__card").cloneNode(true);
+  //const cardImage = card.querySelector(".elements__card-image");
+  //const cardTitle = card.querySelector(".elements__card-title");
+  //const likeButton = card.querySelector(".elements__card-heart");
+  //const deleteButton = card.querySelector(".elements__card-delete");
+  //cardImage.src = link;
+  //cardImage.alt = title;
+  //cardTitle.textContent = title;
   //Reassigning Events
-  likeButton.addEventListener("click", function() {
-      likeButton.classList.toggle("elements__card-heart_active");
-  });
-  deleteButton.addEventListener("click", function(){
-    card.remove();
-  });
-  cardImage.addEventListener("click", function(){
-    handleOpenImage(title, link);
-  });
+  //likeButton.addEventListener("click", function() {
+      //likeButton.classList.toggle("elements__card-heart_active");
+  //});
+  //deleteButton.addEventListener("click", function(){
+    //card.remove();
+  //});
+  //cardImage.addEventListener("click", function(){
+    //handleOpenImage(title, link);
+  //});
 
-  return card;
-}
+  //return card;
+//}
 
 initialCards.forEach(function (element) {
-
-  const newCard = cardGenerator(element.name, element.link);
-  cardArea.append(newCard);
+  const newCard = new Card(element.name, element.link, templateCard);
+  cardArea.append(newCard.generateCard());
 })
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
-  const newCard = cardGenerator(inputCardTitle.value, inputCardLink.value);
-  console.log(inputCardLink.value);
-  cardArea.prepend(newCard);
+  const newCard = new Card(inputCardTitle.value, inputCardLink.value, templateCard);
+  cardArea.prepend(newCard.generateCard());
   handleCloseCardForm();
   // clear the form
   inputCardTitle.value = "";
