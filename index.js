@@ -116,43 +116,34 @@ const initialCards = [
   handleCloseProfileForm();
 }*/
 
-//function cardGenerator(title, link) {
- // const card = templateCard.content.querySelector(".elements__card").cloneNode(true);
-  //const cardImage = card.querySelector(".elements__card-image");
-  //const cardTitle = card.querySelector(".elements__card-title");
-  //const likeButton = card.querySelector(".elements__card-heart");
-  //const deleteButton = card.querySelector(".elements__card-delete");
-  //cardImage.src = link;
-  //cardImage.alt = title;
-  //cardTitle.textContent = title;
+export function cardGenerator(title, link) {
+ const card = templateCard.content.querySelector(".elements__card").cloneNode(true);
+  const cardImage = card.querySelector(".elements__card-image");
+  const cardTitle = card.querySelector(".elements__card-title");
+  const likeButton = card.querySelector(".elements__card-heart");
+  const deleteButton = card.querySelector(".elements__card-delete");
+  cardImage.src = link;
+  cardImage.alt = title;
+  cardTitle.textContent = title;
   //Reassigning Events
-  //likeButton.addEventListener("click", function() {
-      //likeButton.classList.toggle("elements__card-heart_active");
-  //});
-  //deleteButton.addEventListener("click", function(){
-    //card.remove();
-  //});
-  //cardImage.addEventListener("click", function(){
-    //handleOpenImage(title, link);
-  //});
+  likeButton.addEventListener("click", function() {
+      likeButton.classList.toggle("elements__card-heart_active");
+  });
+  deleteButton.addEventListener("click", function(){
+    card.remove();
+  });
+  cardImage.addEventListener("click", function(){
+    handleOpenImage(title, link);
+  });
 
-  //return card;
-//}
+  return card;
+}
 
 initialCards.forEach(function (element) {
   const newCard = new Card(element.name, element.link, templateCard);
   cardArea.append(newCard.generateCard());
 })
 
-/*function handleAddCardSubmit(evt) {
-  evt.preventDefault();
-  const newCard = new Card(inputCardTitle.value, inputCardLink.value, templateCard);
-  cardArea.prepend(newCard.generateCard());
-  handleCloseCardForm();
-  // clear the form
-  inputCardTitle.value = "";
-  inputCardLink.value = "";
-}*/
 
 // events for open and closed
 buttonProfile.addEventListener("click", handleOpenProfileForm);
@@ -166,23 +157,23 @@ formCard.addEventListener("submit", handleAddCardSubmit);
 
 // close the form when clicking outside
 
-function handleCloseOutside(evt) {
+/*function handleCloseOutside(evt) {
   if(evt.target.classList.contains("popup__opener")){
   handleCloseProfileForm();
   handleCloseCardForm();
   handleCloseImage();
   }
-};
+};*/
 
 // close the form with escape key
 
-function handleCloseOnEscape(evt) {
+/*function handleCloseOnEscape(evt) {
   if(evt.key === "Escape"){
     handleCloseProfileForm();
     handleCloseCardForm();
     handleCloseImage();
   }
-};
+};*/
 
 const profileFormValidation = new FormValidator(formProfile, {
   formSelector: ".popup__edit-form",

@@ -1,9 +1,14 @@
+import {cardGenerator} from "./index.js";
+
 const popUpProfile = document.querySelector("#popup-profile");
 const profileName = document.querySelector(".profile__name");
 const profileAbout = document.querySelector(".profile__about");
 const inputProfileName = document.querySelector("#profile-input-name");
 const inputProfileAbout = document.querySelector("#profile-input-about");
 const popUpAddCard = document.querySelector("#popup-add-card");
+const cardArea = document.querySelector(".elements");
+const inputCardTitle = document.querySelector("#input-card-title");
+const inputCardLink = document.querySelector("#input-card-url");
 const popUpTitle = document.querySelector(".popup__image-title");
 const popUpImage = document.querySelector(".popup__image")
 const popUpShowPicture = document.querySelector("#popup-show-picture");
