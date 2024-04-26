@@ -1,4 +1,5 @@
 import {handleOpenImage} from "./utils.js";
+
 export default class Card {
   constructor(title, link, template){
     this.title = title;

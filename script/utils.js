@@ -65,13 +65,29 @@ function handleCloseImage() {
 
 function handleProfileSubmit (evt) {
   evt.preventDefault();
+
+  if (inputProfileName.value.trim() === "" || inputProfileAbout.value.trim() === "") {
+    // show the message if the fields are empty
+    alert("Please fill in the fields.");
+    return;
+  }
+
+  // update the profile
   profileName.textContent = inputProfileName.value;
   profileAbout.textContent = inputProfileAbout.value;
+  // close the form after submiting
   handleCloseProfileForm();
 }
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
+
+if (inputCardTitle.value.trim() === "" || inputCardLink.value.trim() === "" ) {
+    // show the messag if the field are empty
+    alert("Please fill in the fields.");
+    return;
+}
+
   const newCard = cardGenerator(inputCardTitle.value, inputCardLink.value);
   console.log(inputCardLink.value);
   cardArea.prepend(newCard);
