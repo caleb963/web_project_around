@@ -56,7 +56,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/index.html" // ruta a nuestro archivo index.html
+      template: "./index.html" // ruta a nuestro archivo index.html
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin() // conecta el plugin para fusionar archivos CSS

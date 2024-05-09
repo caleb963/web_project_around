@@ -1,4 +1,4 @@
-import {cardGenerator} from "./index.js";
+import {cardGenerator} from "../src/index.js";
 
 const popUpProfile = document.querySelector("#popup-profile");
 const profileName = document.querySelector(".profile__name");
