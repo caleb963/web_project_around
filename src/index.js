@@ -45,7 +45,7 @@ const initialCards = [
 const sectionCards = new Section({
   items: initialCards,
   renderer: function () {},
-}, "#elements");
+}, ".elements");
 
 
 export function cardGenerator(title, link) {
