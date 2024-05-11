@@ -11,18 +11,18 @@
 <body>
   <div class="page">
     <header class="header">
-      <img src="./images/header__title.png" alt="header-title" class="header__title">
+      <img src="<%=require('./images/header__title.png')%>" alt="header-title" class="header__title">
     </header>
     <div class ="profile">
-      <img class ="profile__avatar" src="images/profile__avatar.png" alt="Jacques Cousteau">
+      <img class ="profile__avatar" src="<%=require('./images/profile__avatar.png')%>" alt="Jacques Cousteau">
       <div class="profile__info">
         <div class="profile__title">
         <h2 class ="profile__name" id="profile-name">Jacques Cousteau</h2>
-        <div class="profile__edit-button" id="profile-edit-button"><img src="images/Edit__Button.png" alt="Edit your profile button"></div>
+        <div class="profile__edit-button" id="profile-edit-button"><img src="<%=require('images/Edit__Button.png')%>" alt="Edit your profile button"></div>
         </div>
         <h3 class ="profile__about" id="profile-about">Explorer</h3>
       </div>
-        <div class="profile__add-button" id="profile-add-button"><img src="images/Add_Button.png" alt="add image to your profile button"></div>
+        <div class="profile__add-button" id="profile-add-button"><img src="<%=require('images/Add_Button.png')%>" alt="add image to your profile button"></div>
     </div>
     <section class="elements">
      <template class="template__card">
@@ -71,6 +71,5 @@
   </div>
   <div class="overlay" id="overlay"></div>
 </div>
-  <script src="./src/index.js" type="module"></script>
 </body>
 </html>
