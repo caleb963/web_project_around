@@ -7,7 +7,7 @@ export default class Card {
     this.template = template;
 
     this._handleLike = this._handleLike.bind(this);
-    this._handleRemoveCard = this._handleRemoveCard.bind(this);
+    this._handleRemoeCard = this._handleRemoveCard.bind(this);
     this._handleOpenImageCard = this._handleOpenImageCard.bind(this);
   }
 

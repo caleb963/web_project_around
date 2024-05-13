@@ -18,11 +18,11 @@
       <div class="profile__info">
         <div class="profile__title">
         <h2 class ="profile__name" id="profile-name">Jacques Cousteau</h2>
-        <div class="profile__edit-button" id="profile-edit-button"><img src="<%=require('images/Edit__Button.png')%>" alt="Edit your profile button"></div>
+        <div class="profile__edit-button" id="profile-edit-button"><img src="<%=require('./images/Edit__Button.png')%>" alt="Edit your profile button"></div>
         </div>
         <h3 class ="profile__about" id="profile-about">Explorer</h3>
       </div>
-        <div class="profile__add-button" id="profile-add-button"><img src="<%=require('images/Add_Button.png')%>" alt="add image to your profile button"></div>
+        <div class="profile__add-button" id="profile-add-button"><img src="<%=require('./images/add__Button.png')%>" alt="add image to your profile button"></div>
     </div>
     <section class="elements">
      <template class="template__card">
@@ -41,7 +41,7 @@
     </footer>
   </div>
   <div class="popup" id="popup-profile">
-    <div class="popup__close-button"><img src="./images/Close__Icon.png" alt="close form button" id="close-profile-form"></div>
+    <div class="popup__close-button"><img src="<%=require('./images/Close__Icon.png')%>" alt="close form button" id="close-profile-form"></div>
     <form class="popup__edit-form" id="profile-form">
       <h2 class="popup__edit-form-title">Edit profile</h2>
       <input class="popup__input popup__input-name" id ="profile-input-name" type="text"  minlength="2" maxlength="40" placeholder="First name, Last name" required/>
@@ -52,7 +52,7 @@
     </form>
   </div>
   <div class="popup" id="popup-add-card">
-    <div class="popup__close-button"><img src="./images/Close__Icon.png" alt="close form button" id="close-addcard-form"></div>
+    <div class="popup__close-button"><img src="<%=require('./images/Close__Icon.png')%>" alt="close form button" id="close-addcard-form"></div>
     <form class="popup__edit-form" id="addcard-form">
       <h2 class="popup__edit-form-title">New Place</h2>
       <input class="popup__input popup__input-name"  id="input-card-title" type="text" minlength="2" maxlength="30" placeholder="Title" required/>
@@ -64,7 +64,7 @@
   </div>
   <div class="popup" id="popup-show-picture">
     <div class="popup__image-container">
-    <div class="popup__image-close-button"><img src="./images/Close__Icon.png" alt="close form button" id="close-popup-image"></div>
+    <div class="popup__image-close-button"><img src="<%=require('./images/Close__Icon.png')%>" alt="close form button" id="close-popup-image"></div>
     <img class="popup__image"
          src ="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="placeholder">
          <h2 class="popup__image-title"></h2>
