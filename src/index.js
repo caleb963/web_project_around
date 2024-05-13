@@ -4,6 +4,7 @@ import FormValidator from "../script/FormValidator.js";
 import Section from "../script/Section.js";
 import {handleOpenProfileForm, handleCloseProfileForm, handleOpenCardForm, handleCloseCardForm, handleCloseImage, handleProfileSubmit, handleAddCardSubmit} from "../script/utils.js";
 
+
 const buttonProfile = document.querySelector("#profile-edit-button");
 const buttonCloseProfile = document.querySelector("#close-profile-form");
 const formProfile = document.querySelector("#profile-form");
