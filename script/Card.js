@@ -1,13 +1,14 @@
 import {handleOpenImage} from "./utils.js";
 
 export default class Card {
-  constructor(title, link, template){
+  constructor(title, link, template, handleCardClick){
     this.title = title;
     this.link = link;
     this.template = template;
+    this.handleCardClick = handleCardClick;
 
     this._handleLike = this._handleLike.bind(this);
-    this._handleRemoeCard = this._handleRemoveCard.bind(this);
+    this._handleRemoveCard = this._handleRemoveCard.bind(this);
     this._handleOpenImageCard = this._handleOpenImageCard.bind(this);
   }
 
@@ -25,7 +26,9 @@ export default class Card {
   }
   _handleOpenImageCard = () => {
     const cardImage = this.card.querySelector(".elements__card-image");
-    handleOpenImage(this.title, cardImage.src);
+    cardImage.addEventListener("click", () => {
+      this.handleCardClick(this.title, this.link);
+    })
   }
 
   _setProperties(){

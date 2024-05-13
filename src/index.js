@@ -48,6 +48,18 @@ const sectionCards = new Section({
   renderer: function () {},
 }, ".elements");
 
+// handle card click sketch
+const handleCardClick = (title, link) => {
+  const popup = document.querySelector("#popup-show-picture");
+  const popupImage = popup.querySelector(".popup__image");
+  const popupTitle = popup.querySelector(".popup__image-title");
+
+  popupImage.src = link;
+  popupImage.alt = title;
+  popupTitle.textContent = title;
+
+  popup.classList.add("popup_opener");
+}
 
 export function cardGenerator(title, link) {
  const card = templateCard.content.querySelector(".elements__card").cloneNode(true);
@@ -61,6 +73,8 @@ export function cardGenerator(title, link) {
   //Reassigning Events
   likeButton.addEventListener("click", function() {
       likeButton.classList.toggle("elements__card-heart_active");
+
+      return card;
   });
   deleteButton.addEventListener("click", function(){
     card.remove();
