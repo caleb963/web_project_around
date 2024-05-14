@@ -2,7 +2,7 @@ import "./styles/index.css";
 import Card from "../script/Card.js";
 import FormValidator from "../script/FormValidator.js";
 import Section from "../script/Section.js";
-import {handleOpenProfileForm, handleCloseProfileForm, handleOpenCardForm, handleCloseCardForm , handleCloseImage, handleProfileSubmit, handleAddCardSubmit} from "../script/utils.js";
+import {handleOpenProfileForm, handleCloseProfileForm, handleOpenCardForm, handleCloseCardForm , handleOpenImage, handleCloseImage, handleProfileSubmit, handleAddCardSubmit} from "../script/utils.js";
 
 
 const buttonProfile = document.querySelector("#profile-edit-button");
