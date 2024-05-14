@@ -16,6 +16,7 @@ export default class Card {
    this.card = this.template.content.querySelector(".elements__card").cloneNode(true);
   }
 
+
   _handleLike = () => {
     const likeButton = this.card.querySelector(".elements__card-heart");
     likeButton.classList.toggle("elements__card-heart_active");
