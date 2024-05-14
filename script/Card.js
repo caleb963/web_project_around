@@ -1,16 +1,21 @@
+import { PopupWithImage } from "./PopupWithImage.js";
 import {handleOpenImage} from "./utils.js";
 
+
 export default class Card {
-  constructor(title, link, template, handleCardClick){
+  constructor(title, link, template, handleCardClick, ){
     this.title = title;
     this.link = link;
     this.template = template;
     this.handleCardClick = handleCardClick;
 
+
     this._handleLike = this._handleLike.bind(this);
     this._handleRemoveCard = this._handleRemoveCard.bind(this);
     this._handleOpenImageCard = this._handleOpenImageCard.bind(this);
   }
+
+
 
   _getCardClone(){
    this.card = this.template.content.querySelector(".elements__card").cloneNode(true);
@@ -27,9 +32,11 @@ export default class Card {
   }
   _handleOpenImageCard = () => {
     const cardImage = this.card.querySelector(".elements__card-image");
+    const PopupWithImageCard = new PopupWithImage("#popup-show-picture");
     cardImage.addEventListener("click", () => {
-      this.handleCardClick(this.title, this.link);
+      PopupWithImageCard.open(this.title, this.link);
     })
+
   }
 
   _setProperties(){
