@@ -34,7 +34,7 @@ const handleFormSubmit = (inputValues) => {
   console.log(inputValues);
 };
 
-const popupWithForm = new PopupWithForm(handleFormSubmit, ".popup__edit-form");
+const popupWithForm = new PopupWithForm(handleFormSubmit, "#popup-profile");
 
 const addCardPopup = new PopupWithForm((inputValues) => {
   console.log(inputValues);
