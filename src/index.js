@@ -3,6 +3,7 @@ import Card from "../script/Card.js";
 import FormValidator from "../script/FormValidator.js";
 import Section from "../script/Section.js";
 import {handleOpenProfileForm, handleCloseProfileForm, handleOpenCardForm, handleCloseCardForm , handleOpenImage, handleCloseImage, handleProfileSubmit, handleAddCardSubmit} from "../script/utils.js";
+import { PopupWithForm } from "../script/PopupWithForm.js";
 
 
 const buttonProfile = document.querySelector("#profile-edit-button");

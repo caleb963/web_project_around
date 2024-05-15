@@ -88,6 +88,7 @@ if (inputCardTitle.value.trim() === "" || inputCardLink.value.trim() === "" ) {
     return;
 }
 
+
   const newCard = cardGenerator(inputCardTitle.value, inputCardLink.value);
   console.log(inputCardLink.value);
   cardArea.prepend(newCard);

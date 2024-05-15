@@ -1,5 +1,5 @@
 import { PopupWithImage } from "./PopupWithImage.js";
-import {handleOpenImage} from "./utils.js";
+
 
 
 export default class Card {
