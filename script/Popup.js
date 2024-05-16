@@ -3,6 +3,8 @@ export class Popup {
     this.popupElement = document.querySelector(popupSelector);
     this.popupCloseButton = this.popupElement.querySelector(".popup__close-button");
   this._handleEscClose = this._handleEscClose.bind(this);
+    this.open = this.open.bind(this);
+    this.close = this.close.bind(this);
   }
   open() {
     this.popupElement.classList.add("popup__opener");
@@ -19,7 +21,7 @@ export class Popup {
     }
   }
     _isClickOutside(evt) {
-      return evt.target.classlist.contains("popup_show");
+      return evt.target.classlist.contains("popup__opener");
     }
     setEventListeners() {
       this.popupCloseButton.addEventListener("click", () => {

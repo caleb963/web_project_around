@@ -3,8 +3,7 @@ import Card from "../script/Card.js";
 import FormValidator from "../script/FormValidator.js";
 import Section from "../script/Section.js";
 import {handleOpenProfileForm, handleCloseProfileForm, handleOpenCardForm, handleCloseCardForm , handleOpenImage, handleCloseImage, handleProfileSubmit, handleAddCardSubmit} from "../script/utils.js";
-import { PopupWithForm } from "../script/PopupWithForm.js";
-
+import  PopupWithForm  from "../script/PopupWithForm.js";
 
 const buttonProfile = document.querySelector("#profile-edit-button");
 const buttonCloseProfile = document.querySelector("#close-profile-form");
@@ -92,8 +91,17 @@ initialCards.forEach(function (element) {
   sectionCards.addItem(newCard.generateCard());
 })
 
+function handleFormSubmit(inputValues){
+  console.log(inputValues);
+}
+const profilePopup = new PopupWithForm(handleFormSubmit, "#popup-profile");
+const addCardPopup = new PopupWithForm((inputValues) => {
+  console.log(inputValues);
+
+}, "#popup-add-card");
 
 // events for open and closed
+//buttonProfile.addEventListener("click", handleOpenProfileForm);
 buttonProfile.addEventListener("click", handleOpenProfileForm);
 buttonCloseProfile.addEventListener("click", handleCloseProfileForm);
 buttonAddCard.addEventListener("click", handleOpenCardForm);
