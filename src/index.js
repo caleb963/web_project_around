@@ -91,22 +91,29 @@ initialCards.forEach(function (element) {
   sectionCards.addItem(newCard.generateCard());
 })
 
+
 function handleFormSubmit(inputValues){
   console.log(inputValues);
 }
 const profilePopup = new PopupWithForm(handleFormSubmit, "#popup-profile");
 const addCardPopup = new PopupWithForm((inputValues) => {
   console.log(inputValues);
-
 }, "#popup-add-card");
 
+// Set event listeneres for the popups
+profilePopup.setEventListeners();
+addCardPopup.setEventListeners();
+
+
 // events for open and closed
+
 //buttonProfile.addEventListener("click", handleOpenProfileForm);
-buttonProfile.addEventListener("click", handleOpenProfileForm);
-buttonCloseProfile.addEventListener("click", handleCloseProfileForm);
-buttonAddCard.addEventListener("click", handleOpenCardForm);
-buttonCloseCard.addEventListener("click", handleCloseCardForm);
+buttonProfile.addEventListener("click", () => profilePopup.open());
+buttonCloseProfile.addEventListener("click", () => profilePopup.close());
+buttonAddCard.addEventListener("click", () => addCardPopup.open())
+buttonCloseCard.addEventListener("click", () => addCardPopup.close());
 closeImage.addEventListener("click", handleCloseImage);
+
 
 formProfile.addEventListener("submit", handleProfileSubmit);
 formCard.addEventListener("submit", handleAddCardSubmit);

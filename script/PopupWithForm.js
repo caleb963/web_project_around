@@ -30,16 +30,3 @@ export default class PopupWithForm extends Popup {
   }
 }
 
-const handleFormSubmit = (inputValues) => {
-  console.log(inputValues);
-};
-
-const popupWithForm = new PopupWithForm(handleFormSubmit, "#popup-profile");
-
-const addCardPopup = new PopupWithForm((inputValues) => {
-  console.log(inputValues);
-}, "#popup-add-card");
-
-addCardPopup.setEventListeners();
-popupWithForm.setEventListeners();
-
