@@ -2,8 +2,9 @@ import "./styles/index.css";
 import Card from "../script/Card.js";
 import FormValidator from "../script/FormValidator.js";
 import Section from "../script/Section.js";
-import {handleOpenProfileForm, handleCloseProfileForm, handleOpenCardForm, handleCloseCardForm , handleOpenImage, handleCloseImage, handleProfileSubmit, handleAddCardSubmit} from "../script/utils.js";
+import {handleOpenProfileForm, handleCloseProfileForm, handleOpenCardForm, handleCloseCardForm , handleOpenImage, handleCloseImage} from "../script/utils.js";
 import  PopupWithForm  from "../script/PopupWithForm.js";
+import { UserInfo } from "../script/UserInfo.js";
 
 const buttonProfile = document.querySelector("#profile-edit-button");
 const buttonCloseProfile = document.querySelector("#close-profile-form");
@@ -61,6 +62,11 @@ const handleCardClick = (title, link) => {
   popup.classList.add("popup_opener");
 }
 
+const userInfo = new UserInfo({
+  nameSelector: ".profile__name",
+  aboutSelector: ".profile__about"
+});
+
 export function cardGenerator(title, link) {
  const card = templateCard.content.querySelector(".elements__card").cloneNode(true);
   const cardImage = card.querySelector(".elements__card-image");
@@ -91,30 +97,63 @@ initialCards.forEach(function (element) {
   sectionCards.addItem(newCard.generateCard());
 })
 
-
-function handleFormSubmit(inputValues){
-  console.log(inputValues);
+// Form submit handlers
+function handleProfileSubmit(evt){
+  evt.preventDefault();
+  const inputName = document.querySelector("#profile-input-name");
+  const inputAbout = document.querySelector("#profile-input-about");
+  userInfo.setUserInfo(inputName.value, inputAbout.value);
+  profilePopup.close();
 }
-const profilePopup = new PopupWithForm(handleFormSubmit, "#popup-profile");
-const addCardPopup = new PopupWithForm((inputValues) => {
+
+function handleAddCardSubmit(evt){
+  evt.preventDefault();
+  const inputCardTitle = document.querySelector("#input-card-title");
+  const inputCardLink = document.querySelector("#input-card-url");
+  const newCard = cardGenerator(inputCardTitle.value, inputCardLink.value);
+  cardArea.prepend(newCard);
+  addCardPopup.close();
+}
+
+function handleFormSubmit(evt,inputValues){
+  evt.preventDefault();
   console.log(inputValues);
-}, "#popup-add-card");
+  userInfo.setUserInfo(inputValues.name, inputValues.about);
+  profilePopup.close();
+}
+
+// Event listeners cofiguration
+const profilePopup = new PopupWithForm(handleFormSubmit, "#popup-profile");
+const addCardPopup = new PopupWithForm(handleAddCardSubmit, "#popup-add-card")
 
 // Set event listeneres for the popups
 profilePopup.setEventListeners();
 addCardPopup.setEventListeners();
 
+// user Info instance
+buttonProfile.addEventListener("click", () => {
+  const userInfoData = userInfo.getUserInfo();
+  profilePopup.open(userInfoData)
+});
 
 // events for open and closed
-
-//buttonProfile.addEventListener("click", handleOpenProfileForm);
-buttonProfile.addEventListener("click", () => profilePopup.open());
 buttonCloseProfile.addEventListener("click", () => profilePopup.close());
 buttonAddCard.addEventListener("click", () => addCardPopup.open())
 buttonCloseCard.addEventListener("click", () => addCardPopup.close());
 closeImage.addEventListener("click", handleCloseImage);
 
 
+
+
+
+const formInputs = document.querySelectorAll(".popup__input");
+formInputs.forEach(input => {
+  input.addEventListener("click", (event) => {
+    event.stopPropagation();
+  })
+})
+
+// form event listeners
 formProfile.addEventListener("submit", handleProfileSubmit);
 formCard.addEventListener("submit", handleAddCardSubmit);
 
