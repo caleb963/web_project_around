@@ -69,7 +69,7 @@
 }
 
 .profile__add-button:hover{
-  background-image:url(../images/Add_Button_hover.png);
+  background-image:url(../images/add_Button_hover.png);
   cursor:pointer;
 }
 

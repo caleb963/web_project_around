@@ -2,7 +2,7 @@ import "./styles/index.css";
 import Card from "../script/Card.js";
 import FormValidator from "../script/FormValidator.js";
 import Section from "../script/Section.js";
-import {handleOpenImage, handleCloseImage} from "../script/utils.js";
+import {handleOpenProfileForm, handleCloseProfileForm, handleOpenCardForm, handleCloseCardForm , handleOpenImage, handleCloseImage} from "../script/utils.js";
 import  PopupWithForm  from "../script/PopupWithForm.js";
 import { UserInfo } from "../script/UserInfo.js";
 
