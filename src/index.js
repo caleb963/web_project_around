@@ -102,7 +102,7 @@ function handleProfileSubmit(evt){
   evt.preventDefault();
   const inputName = document.querySelector("#profile-input-name");
   const inputAbout = document.querySelector("#profile-input-about");
-  userInfo.setUserInfo(inputName.value, inputAbout.value);
+  userInfo.setUserInfo({name:inputName.value, about:inputAbout.value});
   profilePopup.close();
 }
 
@@ -119,7 +119,7 @@ function handleFormSubmit(evt,inputValues){
   evt.preventDefault();
   console.log(inputValues);
   userInfo.setUserInfo(inputValues.name, inputValues.about);
-  profilePopup.close();
+  this.close();
 }
 
 // Event listeners cofiguration
@@ -127,8 +127,8 @@ const profilePopup = new PopupWithForm(handleFormSubmit, "#popup-profile");
 const addCardPopup = new PopupWithForm(handleAddCardSubmit, "#popup-add-card")
 
 // Set event listeneres for the popups
-profilePopup.setEventListeners();
-addCardPopup.setEventListeners();
+profilePopup._setEventListeners();
+addCardPopup._setEventListeners();
 
 // user Info instance
 buttonProfile.addEventListener("click", () => {
@@ -141,7 +141,6 @@ buttonCloseProfile.addEventListener("click", () => profilePopup.close());
 buttonAddCard.addEventListener("click", () => addCardPopup.open())
 buttonCloseCard.addEventListener("click", () => addCardPopup.close());
 closeImage.addEventListener("click", handleCloseImage);
-
 
 
 
