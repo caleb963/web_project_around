@@ -17,35 +17,13 @@ const cardArea = document.querySelector(".elements");
 const formCard = document.querySelector("#addcard-form");
 const buttonSubmitCard = document.querySelector("#addcard-submit");
 const closeImage = document.querySelector("#close-popup-image");
-const initialCards = [
-  {
-    name: "Valle de Yosemite",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg"
-  },
-  {
-    name: "Lago Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg"
-  },
-  {
-    name: "Montañas Calvas",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg"
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg"
-  },
-  {
-    name: "Parque Nacional de la Vanoise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg"
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg"
-  }
-];
+
+const groupId = 'web_es_12';
+const token = 'cff91bad-a8c7-417a-948a-f02fc6d5768b';
+const cardsUrl = `https://around.nomoreparties.co/v1/${groupId}/cards`;
 
 const sectionCards = new Section({
-  items: initialCards,
+  items: [], //empty because the cards loads from the server
   renderer: function () {},
 }, ".elements");
 
@@ -92,10 +70,6 @@ export function cardGenerator(title, link) {
   return card;
 }
 
-initialCards.forEach(function (element) {
-  const newCard = new Card(element.name, element.link, templateCard, handleCardClick);
-  sectionCards.addItem(newCard.generateCard());
-})
 
 // Form submit handlers
 function handleProfileSubmit(evt){
@@ -165,15 +139,34 @@ function updateUserInfo(data){
   profileName.textContent = data.name;
   profileAbout.textContent = data.about;
   profileAvatar.src = data.avatar;
-
 }
 
-// upload the userinfor when tle server load the dom
+//function to load initial cards from the server
+function loadInitialCards() {
+  fetch(cardsUrl, {
+    method: "GET",
+    headers: {
+      authorization: token
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);// to watch the cards on the console
+    data.forEach(cardData => {
+      const newCard = new Card(cardData.name, cardData.link, templateCard, handleCardClick);
+      sectionCards.addItem(newCard.generateCard());
+    });
+  })
+  .catch(error => {
+    console.error('Error loading the cards:', error);
+  });
+}
+
+// upload the user ifo and cards from the server
 document.addEventListener("DOMContentLoaded", () => {
-  const groupId = 'web_es_12';
-  const token = 'cff91bad-a8c7-417a-948a-f02fc6d5768b';
   const userUrl = `https://around.nomoreparties.co/v1/${groupId}/users/me`;
 
+  // load userInfo
   fetch(userUrl, {
     method: 'GET',
     headers: {
@@ -189,20 +182,17 @@ document.addEventListener("DOMContentLoaded", () => {
   .catch(error => {
     console.error('Error:', error);
   });
-});
 
+  loadInitialCards();
 
-
-  // initial cards
-  initialCards.forEach(function (element) {
-    const newCard = new Card(element.name, element.link, templateCard, handleCardClick);
-    sectionCards.addItem(newCard.generateCard());
-  });
-
-// event listenrs configuration
+  // event listenrs configuration
 buttonProfile.addEventListener("click", () => {
   const userInfoData = userInfo.getUserInfo();
-  profilePopup.open(userInfoData)
+  profilePopup.open(userInfoData);
+});
+
+// other event listeners
+
 });
 
 const profileFormValidation = new FormValidator(formProfile, {
