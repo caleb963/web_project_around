@@ -156,6 +156,54 @@ formInputs.forEach(input => {
 formProfile.addEventListener("submit", handleProfileSubmit);
 formCard.addEventListener("submit", handleAddCardSubmit);
 
+// function to update the user information profile
+function updateUserInfo(data){
+  const profileName = document.querySelector('.profile__name');
+  const profileAbout = document.querySelector('.profile__about');
+  const profileAvatar = document.querySelector('.profile__avatar');
+
+  profileName.textContent = data.name;
+  profileAbout.textContent = data.about;
+  profileAvatar.src = data.avatar;
+
+}
+
+// upload the userinfor when tle server load the dom
+document.addEventListener("DOMContentLoaded", () => {
+  const groupId = 'web_es_12';
+  const token = 'cff91bad-a8c7-417a-948a-f02fc6d5768b';
+  const userUrl = `https://around.nomoreparties.co/v1/${groupId}/users/me`;
+
+  fetch(userUrl, {
+    method: 'GET',
+    headers: {
+      authorization: token
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    // Process the received data
+    console.log(data); // for watch the data in the console
+    updateUserInfo(data);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+});
+
+
+
+  // initial cards
+  initialCards.forEach(function (element) {
+    const newCard = new Card(element.name, element.link, templateCard, handleCardClick);
+    sectionCards.addItem(newCard.generateCard());
+  });
+
+// event listenrs configuration
+buttonProfile.addEventListener("click", () => {
+  const userInfoData = userInfo.getUserInfo();
+  profilePopup.open(userInfoData)
+});
 
 const profileFormValidation = new FormValidator(formProfile, {
   formSelector: ".popup__edit-form",
