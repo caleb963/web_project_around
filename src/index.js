@@ -93,6 +93,32 @@ function updateUserProfile(name,about) {
 });
 }
 
+// function to add a new card to the server
+function  addNewCard(name, link) {
+  const addCardUrl = `https://around.nomoreparties.co/v1/${groupId}/cards`;
+
+  const cardData = {
+    name: name,
+    link: link
+  };
+
+  console.log('Sending to server:', cardData);
+  return fetch(addCardUrl, {
+    method: "POST",
+    headers: {
+      authorization: token,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(cardData)
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  });
+}
+
 
 // Form submit handlers
 function handleProfileSubmit(evt){
@@ -117,9 +143,26 @@ function handleAddCardSubmit(evt){
   evt.preventDefault();
   const inputCardTitle = document.querySelector("#input-card-title");
   const inputCardLink = document.querySelector("#input-card-url");
-  const newCard = cardGenerator(inputCardTitle.value, inputCardLink.value);
+  /*const newCard = cardGenerator(inputCardTitle.value, inputCardLink.value);
   cardArea.prepend(newCard);
-  addCardPopup.close();
+  addCardPopup.close();*/
+const cardTitle = inputCardTitle.value.trim();
+const cardLink = inputCardLink.value.trim();
+
+if (!cardTitle || !cardLink) {
+  console.error("the card title or link cannot be empty");
+  return;
+}
+
+  addNewCard(cardTitle, cardLink)
+    .then(cardData => {
+      const newCard = new Card(cardData.name, cardData.link, templateCard, handleCardClick);
+      sectionCards.addItem(newCard.generateCard());
+      addCardPopup.close();
+    })
+    .catch(error => {
+      console.error(`Error adding the card:`, error);
+    });
 }
 
 function handleFormSubmit(evt,inputValues){
