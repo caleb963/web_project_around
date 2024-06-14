@@ -70,14 +70,47 @@ export function cardGenerator(title, link) {
   return card;
 }
 
+// function to update user profile on the server
+function updateUserProfile(name,about) {
+  const userUrl = `https://around.nomoreparties.co/v1/${groupId}/users/me`;
+
+  return fetch(userUrl, {
+    method: 'PATCH',
+    headers: {
+      authorization: token,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: name,
+      about: about
+    })
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+});
+}
+
 
 // Form submit handlers
 function handleProfileSubmit(evt){
   evt.preventDefault();
+
   const inputName = document.querySelector("#profile-input-name");
   const inputAbout = document.querySelector("#profile-input-about");
-  userInfo.setUserInfo({name:inputName.value, about:inputAbout.value});
-  profilePopup.close();
+
+  updateUserProfile(inputName.value, inputAbout.value)
+    .then(data => {
+      userInfo.setUserInfo({ name: data.name, about: data.about });
+      profilePopup.close();
+    })
+    .catch(error => {
+      console.error("Error updating the user profile:", error);
+    });
+ /* userInfo.setUserInfo({name:inputName.value, about:inputAbout.value});
+  profilePopup.close();*/
 }
 
 function handleAddCardSubmit(evt){
@@ -107,7 +140,10 @@ addCardPopup._setEventListeners();
 // user Info instance
 buttonProfile.addEventListener("click", () => {
   const userInfoData = userInfo.getUserInfo();
+  document.querySelector("#profile-input-name").value = userInfoData.name;
+  document.querySelector("#profile-input-about").value = userInfoData.about;
   profilePopup.open(userInfoData)
+  profilePopup.open();
 });
 
 // events for open and closed
