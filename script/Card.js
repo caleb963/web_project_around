@@ -19,12 +19,7 @@ export default class Card {
     this.toggleLike = this.toggleLike.bind(this);
   }
 
-  toggleLike() {
-    const likeButton = this.card.querySelector(".elements__card-heart");
-    likeButton.classList.toggle("elements__card-heart_active");
-    this.handleCardClick(this._id, this.userId);
-    this._handleLike();
-  }
+
 
   _getCardClone(){
    this.card = this.template.content.querySelector(".elements__card").cloneNode(true);
@@ -37,7 +32,12 @@ export default class Card {
 
    const likeButton = this.card.querySelector(".elements__card-heart");
     likeButton.classList.toggle("elements__card-heart_active");
-    this.toggleLike(this._id, this.userId);
+  }
+
+  toggleLike() {
+    const likeButton = this.card.querySelector(".elements__card-heart");
+    likeButton.classList.toggle("elements__card-heart_active");
+    this.handleCardClick(this._id, this.userId);
   }
 
   _handleRemoveCard = () =>{
