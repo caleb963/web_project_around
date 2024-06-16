@@ -45,6 +45,23 @@ const userInfo = new UserInfo({
   aboutSelector: ".profile__about"
 });
 
+function toggleLike(cardId, userId) {
+  const method = userId ? 'DELETE' : 'PUT';
+  return fetch(`https://around.nomoreparties.co/v1/${groupId}/cards/likes/${cardId}`, {
+    method: method,
+    headers: {
+      authorization: token,
+    },
+})
+  .then(res => res.json())
+  .then(data => data.likes)
+  .catch(err => {
+    console.error(`Error toggling like: ${err}`);
+    throw err;
+  });
+}
+
+
 export function cardGenerator(title, link) {
  const card = templateCard.content.querySelector(".elements__card").cloneNode(true);
   const cardImage = card.querySelector(".elements__card-image");
@@ -156,7 +173,7 @@ if (!cardTitle || !cardLink) {
 
   addNewCard(cardTitle, cardLink)
     .then(cardData => {
-      const newCard = new Card(cardData.name, cardData.link, templateCard, handleCardClick);
+      const newCard = new Card(cardData.name, cardData.link, userId, templateCard, handleCardClick, toggleLike);
       sectionCards.addItem(newCard.generateCard());
       addCardPopup.close();
     })
@@ -221,7 +238,7 @@ function updateUserInfo(data){
 }
 
 //function to load initial cards from the server
-function loadInitialCards() {
+function loadInitialCards(userId) {
   fetch(cardsUrl, {
     method: "GET",
     headers: {
@@ -232,7 +249,17 @@ function loadInitialCards() {
   .then(data => {
     console.log(data);// to watch the cards on the console
     data.forEach(cardData => {
-      const newCard = new Card(cardData.name, cardData.link, templateCard, handleCardClick);
+      const newCard = new Card({
+        title: cardData.name,
+        link: cardData.link,
+        likes: cardData.likes,
+        _id: cardData._id,
+        userId: userId
+      },
+      templateCard,
+      handleCardClick,
+      toggleLike
+    );
       sectionCards.addItem(newCard.generateCard());
     });
   })
@@ -246,6 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const userUrl = `https://around.nomoreparties.co/v1/${groupId}/users/me`;
 
   // load userInfo
+  let userId;
   fetch(userUrl, {
     method: 'GET',
     headers: {
@@ -255,14 +283,13 @@ document.addEventListener("DOMContentLoaded", () => {
   .then(response => response.json())
   .then(data => {
     // Process the received data
-    console.log(data); // for watch the data in the console
+    userId = data._id;
     updateUserInfo(data);
+    loadInitialCards(userId);
   })
   .catch(error => {
     console.error('Error:', error);
   });
-
-  loadInitialCards();
 
   // event listenrs configuration
 buttonProfile.addEventListener("click", () => {

@@ -96,6 +96,15 @@
   outline:none;
 }
 
+.elements__card-count{
+  color:#000000;
+  font-family:'Inter';
+  font-weight:400;
+  font-size:18px;
+  line-height:22px;
+  margin-right:10px;
+}
+
 @media screen and (max-width:1015px){
   .elements{
     grid-template-columns:repeat(2, 1fr);
