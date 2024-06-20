@@ -4,6 +4,8 @@ import FormValidator from "../script/FormValidator.js";
 import Section from "../script/Section.js";
 import {handleOpenProfileForm, handleCloseProfileForm, handleOpenCardForm, handleCloseCardForm , handleOpenImage, handleCloseImage} from "../script/utils.js";
 import  PopupWithForm  from "../script/PopupWithForm.js";
+import { PopupWithImage } from "../script/PopupWithImage.js";
+import PopupWithConfirmation from "../script/PopupWithConfirmation.js";
 import { UserInfo } from "../script/UserInfo.js";
 
 const buttonProfile = document.querySelector("#profile-edit-button");
@@ -27,23 +29,44 @@ const sectionCards = new Section({
   renderer: function () {},
 }, ".elements");
 
-// handle card click sketch
-const handleCardClick = (title, link) => {
-  const popup = document.querySelector("#popup-show-picture");
-  const popupImage = popup.querySelector(".popup__image");
-  const popupTitle = popup.querySelector(".popup__image-title");
-
-  popupImage.src = link;
-  popupImage.alt = title;
-  popupTitle.textContent = title;
-
-  popup.classList.add("popup_opener");
-}
-
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
   aboutSelector: ".profile__about"
 });
+
+// define handleCardSubmit before use it
+ function handleCardDelete(cardElement,cardId) {
+  deleteCardPopup.open(cardElement, cardId);
+ }
+//Definir handleCardSubmit before use it
+
+function handleDeleteCardSubmit(cardElement, cardId) {
+  fetch(`https://around.nomoreparties.co/v1/${groupId}/cards/${cardId}`, {
+    method: 'DELETE',
+    headers: {
+      authorization: token,
+    },
+})
+ .then((res) => {
+  if(!res.ok) {
+    throw new Error(`HTTP error! status: ${res.status}`);
+  }
+  return res.json();
+ })
+ .then(() => {
+  cardElement.remove();
+  deleteCardPopup.close();
+ })
+  .catch((err) => {
+    console.error(`Error deleting the card: ${err}`);
+  });
+}
+
+// popup instances
+const profilePopup = new PopupWithForm(handleFormSubmit, "#popup-profile");
+const addCardPopup = new PopupWithForm(handleAddCardSubmit, "#popup-add-card");
+const deleteCardPopup = new PopupWithConfirmation("#popup-delete-card", handleDeleteCardSubmit);
+deleteCardPopup.setEventListeners();
 
 function toggleLike(cardId, userId) {
   const method = userId ? 'DELETE' : 'PUT';
@@ -60,6 +83,22 @@ function toggleLike(cardId, userId) {
     throw err;
   });
 }
+
+// handle card click sketch
+const handleCardClick = (title, link) => {
+  const popup = document.querySelector("#popup-show-picture");
+  const popupImage = popup.querySelector(".popup__image");
+  const popupTitle = popup.querySelector(".popup__image-title");
+
+  popupImage.src = link;
+  popupImage.alt = title;
+  popupTitle.textContent = title;
+
+  popup.classList.add("popup_opener");
+}
+
+
+
 
 
 export function cardGenerator(title, link) {
@@ -189,13 +228,64 @@ function handleFormSubmit(evt,inputValues){
   this.close();
 }
 
-// Event listeners cofiguration
-const profilePopup = new PopupWithForm(handleFormSubmit, "#popup-profile");
-const addCardPopup = new PopupWithForm(handleAddCardSubmit, "#popup-add-card")
+//function to load initial cards from the server
+function loadInitialCards(userId) {
+  fetch(cardsUrl, {
+    method: "GET",
+    headers: {
+      authorization: token
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);// to watch the cards on the console
+    data.forEach(cardData => {
+      const newCard = new Card({
+        title: cardData.name,
+        link: cardData.link,
+        likes: cardData.likes,
+        _id: cardData._id,
+        userId: userId
+      },
+      templateCard,
+      handleCardClick,
+      toggleLike,
+      handleCardDelete
+    );
+      sectionCards.addItem(newCard.generateCard());
+    });
+  })
+  .catch(error => {
+    console.error('Error loading the cards:', error);
+  });
+}
 
-// Set event listeneres for the popups
-profilePopup._setEventListeners();
-addCardPopup._setEventListeners();
+
+// upload the user info and cards from the server
+document.addEventListener("DOMContentLoaded", () => {
+  const userUrl = `https://around.nomoreparties.co/v1/${groupId}/users/me`;
+
+  // load userInfo
+  let userId;
+  fetch(userUrl, {
+    method: 'GET',
+    headers: {
+      authorization: token
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    // Process the received data
+    userId = data._id;
+    updateUserInfo(data);
+    loadInitialCards(userId);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+
+
+
 
 // user Info instance
 buttonProfile.addEventListener("click", () => {
@@ -237,59 +327,37 @@ function updateUserInfo(data){
   profileAvatar.src = data.avatar;
 }
 
-//function to load initial cards from the server
-function loadInitialCards(userId) {
-  fetch(cardsUrl, {
-    method: "GET",
+// function to delete a card from the server
+function handleDeleteCardSubmit(cardElement, cardId) {
+  fetch(`https://around.nomoreparties.co/v1/${groupId}/cards/${cardId}`, {
+    method: "DELETE",
     headers: {
-      authorization: token
+      authorization: token,
+    },
+  })
+  .then((res) => {
+    if(!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
     }
+    return res.json();
   })
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);// to watch the cards on the console
-    data.forEach(cardData => {
-      const newCard = new Card({
-        title: cardData.name,
-        link: cardData.link,
-        likes: cardData.likes,
-        _id: cardData._id,
-        userId: userId
-      },
-      templateCard,
-      handleCardClick,
-      toggleLike
-    );
-      sectionCards.addItem(newCard.generateCard());
-    });
+  .then(() => {
+    // remove the card from the DOM
+    cardElement.remove();
+    deleteCardPopup.close();
   })
-  .catch(error => {
-    console.error('Error loading the cards:', error);
+  .catch((err) => {
+    console.error(`Error deleting the card: ${err}`);
   });
 }
 
-// upload the user ifo and cards from the server
-document.addEventListener("DOMContentLoaded", () => {
-  const userUrl = `https://around.nomoreparties.co/v1/${groupId}/users/me`;
 
-  // load userInfo
-  let userId;
-  fetch(userUrl, {
-    method: 'GET',
-    headers: {
-      authorization: token
-    }
-  })
-  .then(response => response.json())
-  .then(data => {
-    // Process the received data
-    userId = data._id;
-    updateUserInfo(data);
-    loadInitialCards(userId);
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
+
+
+// Set event listeneres for the popups
+profilePopup._setEventListeners();
+addCardPopup._setEventListeners();
+
 
   // event listenrs configuration
 buttonProfile.addEventListener("click", () => {

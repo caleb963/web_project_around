@@ -3,7 +3,7 @@ import { PopupWithImage } from "./PopupWithImage.js";
 
 
 export default class Card {
-  constructor({title, link,likes, _id, userId}, template, handleCardClick){
+  constructor({title, link, likes, _id, userId}, template, handleCardClick, _toggleLike, handleCardDelete) {
     this.title = title;
     this.link = link;
     this.likes = likes;
@@ -11,12 +11,13 @@ export default class Card {
     this.userId = userId;
     this.template = template;
     this.handleCardClick = handleCardClick;
+    this.handleCardDelete = handleCardDelete;
 
 
     this._handleLike = this._handleLike.bind(this);
     this._handleRemoveCard = this._handleRemoveCard.bind(this);
     this._handleOpenImageCard = this._handleOpenImageCard.bind(this);
-    this.toggleLike = this.toggleLike.bind(this);
+    this._toggleLike = this.toggleLike.bind(this);
   }
 
 
@@ -41,7 +42,7 @@ export default class Card {
   }
 
   _handleRemoveCard = () =>{
-    this.card.remove();
+    this.handleCardDelete(this.card, this._id); // Llamar the delete function from the main script
   }
 
   _handleOpenImageCard = () => {
