@@ -70,14 +70,16 @@
          src ="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="placeholder">
          <h2 class="popup__image-title"></h2>
   </div>
-    <div  id="popup-delete-card" class="popup">
-      <div class="popup__close-button" id="close-delete-card-popup"><img src="<%=require('./images/Close__Icon.png')%>" alt="close form button"></div>
-      <div class="popup__confirmation-content">
-        <h2 class="popup__edit-form-title">Are You Sure?</h2>
-        <button class="popup__input-submit" type="submit"  id="delete-card-submit">Yes</button>
-      </div>
-    </div>
   <div class="overlay" id="overlay"></div>
+  </div>
+  <div  id="popup-delete-card" class="popup">
+    <div class="popup-delete-container">
+    <div class="popup__close-button" id="close-delete-card-popup"><img src="<%=require('./images/Close__Icon.png')%>" alt="close form button"></div>
+    <div class="popup__confirmation-content">
+      <h2 class="popup__edit-form-title">Are You Sure?</h2>
+      <button class="popup__input-submit" type="submit"  id="delete-card-submit">Yes</button>
+    </div>
+  </div>
 </div>
 </body>
 </html>
