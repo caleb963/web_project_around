@@ -62,11 +62,22 @@ export default class Card {
 
     const likeCount = this.card.querySelector(".elements__card-like-count");
     likeCount.textContent = this.likes.length; // show the numbre of likes
+
+     //show and hide the trash icon
+  const deleteButton = this.card.querySelector(".elements__card-delete");
+  if (this.userId !== this.ownerId) {
+    deleteButton.remove();
   }
+  }
+
+
 
    setEventListeners() {
     this.card.querySelector(".elements__card-heart").addEventListener("click", this._handleLike);
-    this.card.querySelector(".elements__card-delete").addEventListener("click", this._handleRemoveCard);
+    if (this.userId === this.ownerId) {
+      this.card.querySelector(".elements__card-delete").addEventListener("click", this._handleRemoveCard);
+    }
+
     this.card.querySelector(".elements__card-image").addEventListener("click", () => { this._handleOpenImageCard(this.title, this.link);
    });
    }

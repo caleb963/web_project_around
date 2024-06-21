@@ -24,6 +24,8 @@ const groupId = 'web_es_12';
 const token = 'cff91bad-a8c7-417a-948a-f02fc6d5768b';
 const cardsUrl = `https://around.nomoreparties.co/v1/${groupId}/cards`;
 
+// global variable to store the user Id
+let userId;
 const sectionCards = new Section({
   items: [], //empty because the cards loads from the server
   renderer: function () {},
@@ -212,7 +214,18 @@ if (!cardTitle || !cardLink) {
 
   addNewCard(cardTitle, cardLink)
     .then(cardData => {
-      const newCard = new Card(cardData.name, cardData.link, userId, templateCard, handleCardClick, toggleLike);
+      const newCard = new Card({
+        title:cardData.name,
+        link:cardData.link,
+        likes:cardData.likes,
+        userId: userId, //usimg global userId here
+        ownerId: cardData.owner._id
+      },
+        templateCard,
+        handleCardClick,
+        toggleLike,
+        handleCardDelete
+      );
       sectionCards.addItem(newCard.generateCard());
       addCardPopup.close();
     })
@@ -245,7 +258,8 @@ function loadInitialCards(userId) {
         link: cardData.link,
         likes: cardData.likes,
         _id: cardData._id,
-        userId: userId
+        userId: userId, //current user Id
+        ownerId: cardData.owner._id //owner of the card Id
       },
       templateCard,
       handleCardClick,
@@ -379,5 +393,7 @@ const profileFormValidation = new FormValidator(formProfile, {
 });
 
 profileFormValidation.enableValidation()
+
+
 
 
