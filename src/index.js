@@ -26,6 +26,7 @@ const cardsUrl = `https://around.nomoreparties.co/v1/${groupId}/cards`;
 
 // global variable to store the user Id
 let userId;
+
 const sectionCards = new Section({
   items: [], //empty because the cards loads from the server
   renderer: function () {},
@@ -70,8 +71,8 @@ const addCardPopup = new PopupWithForm(handleAddCardSubmit, "#popup-add-card");
 const deleteCardPopup = new PopupWithConfirmation("#popup-delete-card", handleDeleteCardSubmit);
 deleteCardPopup.setEventListeners();
 
-function toggleLike(cardId, userId) {
-  const method = userId ? 'DELETE' : 'PUT';
+function toggleLike(cardId, isLiked) {
+  const method = isLiked ? 'DELETE' : 'PUT';
   return fetch(`https://around.nomoreparties.co/v1/${groupId}/cards/likes/${cardId}`, {
     method: method,
     headers: {
@@ -86,7 +87,7 @@ function toggleLike(cardId, userId) {
   });
 }
 
-// handle card click sketch
+// handle card click
 const handleCardClick = (title, link) => {
   const popup = document.querySelector("#popup-show-picture");
   const popupImage = popup.querySelector(".popup__image");
@@ -192,13 +193,16 @@ function handleProfileSubmit(evt){
     })
     .catch(error => {
       console.error("Error updating the user profile:", error);
+    })
+    .finally(() => {
+      formProfileSubmit.textContent = "Save";
     });
- /* userInfo.setUserInfo({name:inputName.value, about:inputAbout.value});
-  profilePopup.close();*/
 }
 
 function handleAddCardSubmit(evt){
   evt.preventDefault();
+  buttonSubmitCard.textContent = "Saving..."
+
   const inputCardTitle = document.querySelector("#input-card-title");
   const inputCardLink = document.querySelector("#input-card-url");
   /*const newCard = cardGenerator(inputCardTitle.value, inputCardLink.value);
@@ -218,6 +222,7 @@ if (!cardTitle || !cardLink) {
         title:cardData.name,
         link:cardData.link,
         likes:cardData.likes,
+        _id: cardData._id,
         userId: userId, //usimg global userId here
         ownerId: cardData.owner._id
       },
@@ -226,11 +231,15 @@ if (!cardTitle || !cardLink) {
         toggleLike,
         handleCardDelete
       );
+
       sectionCards.addItem(newCard.generateCard());
       addCardPopup.close();
     })
     .catch(error => {
       console.error(`Error adding the card:`, error);
+    })
+    .finally(() => {
+      buttonSubmitCard.textContent = "Create";
     });
 }
 
@@ -316,7 +325,52 @@ buttonAddCard.addEventListener("click", () => addCardPopup.open())
 buttonCloseCard.addEventListener("click", () => addCardPopup.close());
 closeImage.addEventListener("click", handleCloseImage);
 
+// Fetching initial data
+function fetchInitialData() {
+  const userUrl = `https://around.nomoreparties.co/v1/${groupId}/users/me`;
+  const cardsUrl = `https://around.nomoreparties.co/v1/${groupId}/cards`;
 
+  Promise.all([
+    fetch(userUrl, {
+      headers: {
+        authorization: token,
+      },
+    }).then(res => res.json()),
+    fetch(cardsUrl, {
+      headers: {
+        authorization: token,
+      },
+    }).then(res => res.json())
+  ])
+  .then(([userData, initialCards]) => {
+    userId = userData._id;
+    userInfo.setUserInfo(userData)({
+      name: userData.name,
+      about: userData.about
+    });
+
+    sectionCards.items = initialCards;
+    sectionCards.renderer = (cardData) => {
+      const card = new Card({
+        title:cardData.name,
+        link:cardData.link,
+        likes:cardData.likes,
+        _id: cardData._id,
+        userId: userId,
+        ownerId: cardData.owner._id,
+      }, templateCard, handleCardClick, toggleLike, handleCardDelete);
+      const cardElement = card.generateCard();
+      sectionCards.addItem(cardElement);
+      };
+
+      sectionCards.renderItems();
+  })
+  .catch(err => {
+    console.error(`Error fetching initial data: ${err}`);
+  });
+}
+
+fetchInitialData();
 
 
 const formInputs = document.querySelectorAll(".popup__input");
@@ -340,33 +394,6 @@ function updateUserInfo(data){
   profileAbout.textContent = data.about;
   profileAvatar.src = data.avatar;
 }
-
-// function to delete a card from the server
-function handleDeleteCardSubmit(cardElement, cardId) {
-  fetch(`https://around.nomoreparties.co/v1/${groupId}/cards/${cardId}`, {
-    method: "DELETE",
-    headers: {
-      authorization: token,
-    },
-  })
-  .then((res) => {
-    if(!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
-    }
-    return res.json();
-  })
-  .then(() => {
-    // remove the card from the DOM
-    cardElement.remove();
-    deleteCardPopup.close();
-  })
-  .catch((err) => {
-    console.error(`Error deleting the card: ${err}`);
-  });
-}
-
-
-
 
 // Set event listeneres for the popups
 profilePopup._setEventListeners();

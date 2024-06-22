@@ -9,6 +9,7 @@ export default class Card {
     this.likes = likes;
     this._id = _id;
     this.userId = userId;
+    this.ownerId = ownerId;
     this.template = template;
     this.handleCardClick = handleCardClick;
     this.handleCardDelete = handleCardDelete;
@@ -17,7 +18,7 @@ export default class Card {
     this._handleLike = this._handleLike.bind(this);
     this._handleRemoveCard = this._handleRemoveCard.bind(this);
     this._handleOpenImageCard = this._handleOpenImageCard.bind(this);
-    this._toggleLike = this.toggleLike.bind(this);
+    this._toggleLike = this._toggleLike.bind(this);
   }
 
 
@@ -31,18 +32,41 @@ export default class Card {
 
   _handleLike = () => {
 
-   const likeButton = this.card.querySelector(".elements__card-heart");
-    likeButton.classList.toggle("elements__card-heart_active");
+   /*const likeButton = this.card.querySelector(".elements__card-heart");
+    likeButton.classList.toggle("elements__card-heart_active");*/
+    const isLiked = this.likes.some(user => user._id === this.userId);
+    this._toggleLike(this._id, isLiked)
+      .then((updatedLikes) => {
+        this.likes = updatedLikes;
+        this._updateLikesView();
+      })
+      .catch(err => {
+        console.error(`Error toggling like: ${err}`);
+      });
   }
 
-  toggleLike() {
+  /*toggleLike() {
     const likeButton = this.card.querySelector(".elements__card-heart");
     likeButton.classList.toggle("elements__card-heart_active");
     this.handleCardClick(this._id, this.userId);
-  }
+  }*/
+
+    _updateLikesView() {
+      const likeButton = this.card.querySelector(".elements__card-heart");
+      const likeCount = this.card.querySelector(".elements__card-like-count");
+      const isLiked = this.likes.some(user => user => user._id === this.userId);
+
+      if (isLiked) {
+        likeButton.classList.add("elements__card-heart_active");
+      } else {
+        likeButton.classList.remove("elements__card-heart_active");
+      }
+
+      likeCount.textContent = this.likes.length;
+    }
 
   _handleRemoveCard = () =>{
-    this.handleCardDelete(this.card, this._id); // Llamar the delete function from the main script
+    this.handleCardDelete(this.card, this._id); // call the delete function from the main script
   }
 
   _handleOpenImageCard = () => {
@@ -60,8 +84,10 @@ export default class Card {
     cardImage.src = this.link;
     cardImage.alt = this.title;
 
-    const likeCount = this.card.querySelector(".elements__card-like-count");
-    likeCount.textContent = this.likes.length; // show the numbre of likes
+    this._updateLikesView();
+
+    /*const likeCount = this.card.querySelector(".elements__card-like-count");
+    likeCount.textContent = this.likes.length; // show the numbre of likes*/
 
      //show and hide the trash icon
   const deleteButton = this.card.querySelector(".elements__card-delete");
