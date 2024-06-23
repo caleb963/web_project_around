@@ -3,7 +3,7 @@ import { PopupWithImage } from "./PopupWithImage.js";
 
 
 export default class Card {
-  constructor({title, link, likes, _id, userId}, template, handleCardClick, _toggleLike, handleCardDelete) {
+  constructor({title, link, likes, _id, userId, ownerId}, template, handleCardClick, _toggleLike, handleCardDelete) {
     this.title = title;
     this.link = link;
     this.likes = likes;
@@ -12,13 +12,13 @@ export default class Card {
     this.ownerId = ownerId;
     this.template = template;
     this.handleCardClick = handleCardClick;
+    this._toggleLike = _toggleLike;
     this.handleCardDelete = handleCardDelete;
 
 
     this._handleLike = this._handleLike.bind(this);
     this._handleRemoveCard = this._handleRemoveCard.bind(this);
     this._handleOpenImageCard = this._handleOpenImageCard.bind(this);
-    this._toggleLike = this._toggleLike.bind(this);
   }
 
 
@@ -31,9 +31,6 @@ export default class Card {
 
 
   _handleLike = () => {
-
-   /*const likeButton = this.card.querySelector(".elements__card-heart");
-    likeButton.classList.toggle("elements__card-heart_active");*/
     const isLiked = this.likes.some(user => user._id === this.userId);
     this._toggleLike(this._id, isLiked)
       .then((updatedLikes) => {
@@ -45,11 +42,11 @@ export default class Card {
       });
   }
 
-  /*toggleLike() {
+  _toggleLike() {
     const likeButton = this.card.querySelector(".elements__card-heart");
     likeButton.classList.toggle("elements__card-heart_active");
     this.handleCardClick(this._id, this.userId);
-  }*/
+  }
 
     _updateLikesView() {
       const likeButton = this.card.querySelector(".elements__card-heart");
@@ -86,10 +83,6 @@ export default class Card {
 
     this._updateLikesView();
 
-    /*const likeCount = this.card.querySelector(".elements__card-like-count");
-    likeCount.textContent = this.likes.length; // show the numbre of likes*/
-
-     //show and hide the trash icon
   const deleteButton = this.card.querySelector(".elements__card-delete");
   if (this.userId !== this.ownerId) {
     deleteButton.remove();

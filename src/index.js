@@ -260,7 +260,9 @@ function loadInitialCards(userId) {
   })
   .then(response => response.json())
   .then(data => {
-    console.log(data);// to watch the cards on the console
+    console.log(data.some((item) => {
+      return !item.owner._id
+    }));// to watch the cards on the console
     data.forEach(cardData => {
       const newCard = new Card({
         title: cardData.name,
@@ -344,7 +346,7 @@ function fetchInitialData() {
   ])
   .then(([userData, initialCards]) => {
     userId = userData._id;
-    userInfo.setUserInfo(userData)({
+    userInfo.setUserInfo()({
       name: userData.name,
       about: userData.about
     });
