@@ -346,13 +346,13 @@ function fetchInitialData() {
   ])
   .then(([userData, initialCards]) => {
     userId = userData._id;
-    userInfo.setUserInfo()({
+    userInfo.setUserInfo({
       name: userData.name,
       about: userData.about
     });
 
     sectionCards.items = initialCards;
-    sectionCards.renderer = (cardData) => {
+    sectionCards._renderer = (cardData) => {
       const card = new Card({
         title:cardData.name,
         link:cardData.link,
