@@ -20,6 +20,13 @@ const formCard = document.querySelector("#addcard-form");
 const buttonSubmitCard = document.querySelector("#addcard-submit");
 const closeImage = document.querySelector("#close-popup-image");
 
+const avatarEdition = document.querySelector(".profile__avatar-edit-icon");
+const avatarPopup = document.querySelector("#popup-update-avatar");
+const closeAvatarPopupButton = document.querySelector("#close-update-avatar");
+const formAvatar = document.querySelector("#update-avatar-form");
+const inputAvatarUrl = document.querySelector("#input-avatar-url");
+
+
 const groupId = 'web_es_12';
 const token = 'cff91bad-a8c7-417a-948a-f02fc6d5768b';
 const cardsUrl = `https://around.nomoreparties.co/v1/${groupId}/cards`;
@@ -150,6 +157,28 @@ function updateUserProfile(name,about) {
     }
     return response.json();
 });
+}
+
+// function to update the user avatar
+function updateAvatar(avatarUrl) {
+  const avatarUrlEndpoint =  `https://around.nomoreparties.co/v1${groupId}/users/me/avatar`;
+
+  return fetch(avatarUrlEndpoint, {
+    method: 'PATCH',
+    headers: {
+      authorization: token,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      avatar: avatarUrl
+    })
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  });
 }
 
 // function to add a new card to the server
@@ -326,6 +355,34 @@ buttonCloseProfile.addEventListener("click", () => profilePopup.close());
 buttonAddCard.addEventListener("click", () => addCardPopup.open())
 buttonCloseCard.addEventListener("click", () => addCardPopup.close());
 closeImage.addEventListener("click", handleCloseImage);
+
+// Avatar update popup handling
+avatarEdition.addEventListener("click", () => {
+  avatarPopup.classList.add('popup_opener');
+});
+
+closeAvatarPopupButton.addEventListener("click", () => {
+  avatarPopup.classList.remove('popup_opener')
+});
+
+formAvatar.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const avatarUrl = inputAvatarUrl.value.trim();
+
+  if (!avatarUrl) {
+    console.error('Avatar URL cannot be empty');
+    return;
+  }
+
+  updateAvatar(avatarUrl)
+    .then(data => {
+      document.querySelector(".profile__avatar").src = data.avatar;
+      avatarPopup.classList.remove("popup__opener");
+    })
+    .catch(error => {
+      console.error('Error updating avatar:', error)
+    });
+});
 
 // Fetching initial data
 function fetchInitialData() {
