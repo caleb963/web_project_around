@@ -14,8 +14,10 @@
       <img src="<%=require('./images/header__title.png')%>" alt="header-title" class="header__title">
     </header>
     <d class ="profile">
+      <div class="profile__avatar-content">
       <img class ="profile__avatar" src="<%=require('./images/profile__avatar.png')%>" alt="Jacques Cousteau">
       <div class="profile__avatar-edit-icon" src="<%=require('./images/profile__avatar-edit-icon.png')%>"></div>
+      </div>
       <div class="profile__info">
         <div class="profile__title">
         <h2 class ="profile__name" id="profile-name">Jacques Cousteau</h2>
@@ -83,6 +85,7 @@
   </div>
 </div>
 <div class="popup" id="popup-update-avatar">
+  <div class="popup__avatar-container">
     <div class="popup__close-button" ><img src="<%=require('./images/Close__Icon.png')%>" alt="close form button" id="close-update-avatar"></div>
     <form class="popup__edit-form" id="update-avatar-form">
       <h2 class="popup__edit-form-title">Change profile picture</h2>
@@ -91,5 +94,6 @@
       <button class="popup__input-submit" type="submit"  id="avatar-submit">Save</button>
     </form>
   </div>
+</div>
 </body>
 </html>
