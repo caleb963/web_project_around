@@ -431,6 +431,13 @@ function fetchInitialData() {
 
 fetchInitialData();
 
+avatarEdition.addEventListener("click", () => {
+  avatarPopup.classList.add('popup__opener');
+});
+
+closeAvatarPopupButton.addEventListener("click", () => {
+  avatarPopup.classList.remove('popup__opener');
+})
 
 const formInputs = document.querySelectorAll(".popup__input");
 formInputs.forEach(input => {
