@@ -159,6 +159,16 @@
   border-radius: 10px;
 }
 
+.popup__avatar-container {
+  background-color:white;
+  position:relative;
+  padding:10px;
+  border-radius: 10px;
+}
+
+
+
+
 @media screen and (max-width:320px){
   .popup{
     width:320px;

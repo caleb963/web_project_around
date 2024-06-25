@@ -11,26 +11,45 @@
 .profile__avatar-content{
  position:relative;
  cursor:pointer;
-}
 
-.profile__avatar-content:hover .profile__avatar-edit-icon{
-  display:block;
-}
+ &:hover {
+   display:block;
+
+    &::after {
+      content: '';
+      width: calc(100% - 20px);
+      height: 100%;
+      position: absolute;
+      border-radius: 500px;
+      background-color: black;
+      opacity: 0.6;
+      z-index: 1;
+    }
+
+    .profile__avatar-edit-icon {
+      z-index: 2;
+      display:block;
+    }
+  }
+ }
+
+
 
 
 .profile__avatar{
   width:120px;
   height:120px;
   margin-right:20px;
+  border-radius: 500px;
+  object-fit: cover;
 }
 
 .profile__avatar-edit-icon {
   position:absolute;
-  z-index:2;
-  top:0;
-  left:0;
-  width:120px;
-  height:120px;
+  top:calc(50% - 20px);
+  left: calc(50% - 20px);
+  width:20px;
+  height:20px;
   display:none;
 }
 
