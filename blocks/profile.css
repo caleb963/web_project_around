@@ -24,6 +24,8 @@
       background-color: black;
       opacity: 0.6;
       z-index: 1;
+      top:0;
+      left:0;
     }
 
     .profile__avatar-edit-icon {

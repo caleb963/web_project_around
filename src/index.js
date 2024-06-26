@@ -161,7 +161,7 @@ function updateUserProfile(name,about) {
 
 // function to update the user avatar
 function updateAvatar(avatarUrl) {
-  const avatarUrlEndpoint =  `https://around.nomoreparties.co/v1${groupId}/users/me/avatar`;
+  const avatarUrlEndpoint =  `https://around.nomoreparties.co/v1/${groupId}/users/me/avatar`;
 
   return fetch(avatarUrlEndpoint, {
     method: 'PATCH',
@@ -358,11 +358,11 @@ closeImage.addEventListener("click", handleCloseImage);
 
 // Avatar update popup handling
 avatarEdition.addEventListener("click", () => {
-  avatarPopup.classList.add('popup_opener');
+  avatarPopup.classList.add('popup__opener');
 });
 
 closeAvatarPopupButton.addEventListener("click", () => {
-  avatarPopup.classList.remove('popup_opener')
+  avatarPopup.classList.remove('popup__opener')
 });
 
 formAvatar.addEventListener('submit', (event) => {
@@ -431,13 +431,6 @@ function fetchInitialData() {
 
 fetchInitialData();
 
-avatarEdition.addEventListener("click", () => {
-  avatarPopup.classList.add('popup__opener');
-});
-
-closeAvatarPopupButton.addEventListener("click", () => {
-  avatarPopup.classList.remove('popup__opener');
-})
 
 const formInputs = document.querySelectorAll(".popup__input");
 formInputs.forEach(input => {
