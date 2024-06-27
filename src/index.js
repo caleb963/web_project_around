@@ -129,25 +129,6 @@ export function cardGenerator(title, link) {
 
 // function to update user profile on the server
 function updateUserProfile(name,about) {
- /* const userUrl = `https://around.nomoreparties.co/v1/${groupId}/users/me`;
-
-  return fetch(userUrl, {
-    method: 'PATCH',
-    headers: {
-      authorization: token,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      name: name,
-      about: about
-    })
-  })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    return response.json();
-});*/
 return api.updateUserProfile({name, about });
 }
 
@@ -155,51 +136,11 @@ return api.updateUserProfile({name, about });
 
 // function to update the user avatar
 function updateAvatar(avatarUrl) {
- /* const avatarUrlEndpoint =  `https://around.nomoreparties.co/v1/${groupId}/users/me/avatar`;
-
-  return fetch(avatarUrlEndpoint, {
-    method: 'PATCH',
-    headers: {
-      authorization: token,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      avatar: avatarUrl
-    })
-  })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    return response.json();
-  });*/
   return api.updateAvatar({ avatar: avatarUrl});
 }
 
 // function to add a new card to the server
 function  addNewCard(name, link) {
-  /*const addCardUrl = `https://around.nomoreparties.co/v1/${groupId}/cards`;
-
-  const cardData = {
-    name: name,
-    link: link
-  };
-
-  console.log('Sending to server:', cardData);
-  return fetch(addCardUrl, {
-    method: "POST",
-    headers: {
-      authorization: token,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(cardData)
-  })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    return response.json();
-  });*/
   return api.addCard({name, link});
 }
 
@@ -276,17 +217,6 @@ function handleFormSubmit(evt,inputValues){
 
 //function to load initial cards from the server
 function loadInitialCards(userId) {
- /* fetch(cardsUrl, {
-    method: "GET",
-    headers: {
-      authorization: token
-    }
-  })
-  .then(response => response.json())
-  .then(data => {
-    console.log(data.some((item) => {
-      return !item.owner._id
-    }));// to watch the cards on the console*/
     api.getInitialCards()
     .then(data => {
     data.forEach(cardData => {
@@ -314,20 +244,7 @@ function loadInitialCards(userId) {
 
 // Fetching initial data
 function fetchInitialData() {
-  /* const userUrl = `https://around.nomoreparties.co/v1/${groupId}/users/me`;
-   const cardsUrl = `https://around.nomoreparties.co/v1/${groupId}/cards`;*/
-
    Promise.all([
-     /*fetch(userUrl, {
-       headers: {
-         authorization: token,
-       },
-     }).then(res => res.json()),
-     fetch(cardsUrl, {
-       headers: {
-         authorization: token,
-       },
-     }).then(res => res.json())*/
      api.getUserInfo(),
      api.getInitialCards()
    ])
