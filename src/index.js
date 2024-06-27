@@ -60,19 +60,6 @@ const userInfo = new UserInfo({
 //Definir handleCardSubmit before use it
 
 function handleDeleteCardSubmit(cardElement, cardId) {
-  /*fetch(`https://around.nomoreparties.co/v1/${groupId}/cards/${cardId}`, {
-    method: 'DELETE',
-    headers: {
-      authorization: token,
-    },
-})
-
- .then(() => {
-  if(!res.ok) {
-    throw new Error(`HTTP error! status: ${res.status}`);
-  }
-  return res.json();
- })*/
  api.deleteCard(cardId)
  .then(() => {
   cardElement.remove();
@@ -90,15 +77,6 @@ const deleteCardPopup = new PopupWithConfirmation("#popup-delete-card", handleDe
 deleteCardPopup.setEventListeners();
 
 function toggleLike(cardId, isLiked) {
- /* const method = isLiked ? 'DELETE' : 'PUT';
-  return fetch(`https://around.nomoreparties.co/v1/${groupId}/cards/likes/${cardId}`, {
-    method: method,
-    headers: {
-      authorization: token,
-    },
-})
-  .then(res => res.json())
-  */
  return api.toggleLike(cardId, isLiked)
   .then(data => data.likes)
   .catch(err => {
@@ -143,7 +121,7 @@ export function cardGenerator(title, link) {
     card.remove();
   });
   cardImage.addEventListener("click", function(){
-    handleOpenImage(title, link);
+    handleCardClick(title, link);
   });
 
   return card;
