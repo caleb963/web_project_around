@@ -60,6 +60,7 @@ const userInfo = new UserInfo({
 //Definir handleCardSubmit before use it
 
 function handleDeleteCardSubmit(cardElement, cardId) {
+  console.log(cardId);
  api.deleteCard(cardId)
  .then(() => {
   cardElement.remove();
@@ -104,6 +105,7 @@ const handleCardClick = (title, link) => {
 
 export function cardGenerator(title, link) {
  const card = templateCard.content.querySelector(".elements__card").cloneNode(true);
+ console.log(card);
   const cardImage = card.querySelector(".elements__card-image");
   const cardTitle = card.querySelector(".elements__card-title");
   const likeButton = card.querySelector(".elements__card-heart");
@@ -271,39 +273,13 @@ function fetchInitialData() {
 
        sectionCards.renderItems();
    })
-   .catch(err => {
+  .catch(err => {
      console.error(`Error fetching initial data: ${err}`);
    });
  }
 
  document.addEventListener("DOMContentLoaded", fetchInitialData);
 
-
-/*
-// upload the user info and cards from the server
-document.addEventListener("DOMContentLoaded", () => {
-  const userUrl = `https://around.nomoreparties.co/v1/${groupId}/users/me`;
-
-  // load userInfo
-  let userId;
-  fetch(userUrl, {
-    method: 'GET',
-    headers: {
-      authorization: token
-    }
-  })
-  .then(response => response.json())
-  .then(data => {
-    // Process the received data
-    userId = data._id;
-    updateUserInfo(data);
-    loadInitialCards(userId);
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-
-*/
 
 const formInputs = document.querySelectorAll(".popup__input");
 formInputs.forEach(input => {

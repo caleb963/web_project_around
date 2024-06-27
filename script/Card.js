@@ -83,6 +83,8 @@ export default class Card {
 
     this._updateLikesView();
 
+
+
   const deleteButton = this.card.querySelector(".elements__card-delete");
   if (this.userId !== this.ownerId) {
     deleteButton.remove();
